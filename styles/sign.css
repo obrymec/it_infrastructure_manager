@@ -1,0 +1,68 @@
+/*Animations*/
+@keyframes options_show {from {opacity: 0; transform: translateY(-53.5px);} to {opacity: 1; transform: translateY(0);}}
+@keyframes sign_in_up {from {visibility: hidden; top: -100%;} to {top: 0; visibility: visible}}
+
+/*Sign in image background size adjustment and sign container*/
+div.img-zone img {size: 100%; position: absolute; z-index: 0;} div.sign-container {top: -100%; visibility: hidden;}
+/*Icon clearner container*/
+div.icon-clear {margin-top: 9.5px; position: relative; z-index: 1; margin-left: -32px; visibility: hidden;}
+/*Sign field zone container*/
+div.field-zone {display: flex;} div.icon-clear > svg {position: absolute; cursor: pointer; z-index: 1;}
+/*Formulary title*/
+div.title > label {font-size: 22px; font-family: verdana; text-shadow: 0 0 10px skyblue; color: #fff;}
+/*For any icon field*/
+div.icon-field svg {position: absolute; z-index: 2; margin-top: 6px; margin-left: 10px; opacity: 0;}
+
+/*Sign fields*/
+div.sign-fields {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	opacity: 0;
+	backdrop-filter: blur(0);
+}
+
+/*Options design*/
+div.options {
+	z-index: 0;
+	transform: translateY(-53.5px);
+	position: relative;
+	opacity: 0;
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+}
+
+/*Inputs*/
+input.field {
+    padding: 5px 40px 5px 42px;
+    width: 0;
+   	opacity: 0;
+    height: 30px;
+    color: steelblue;
+    border-radius: 30px;
+    box-shadow: 0 0 8px silver;
+    position: relative;
+    z-index: 1;
+    border: none;
+    outline: none;
+} input.field::placeholder {font-style: italic;}
+
+/*Button form*/
+input[type="button"] {
+    background-color: steelblue;
+    box-shadow: 0 0 1px 1px silver;
+    padding: 5px 0 6px 0;
+    color: #FFF;
+    border-radius: 35px;
+    border: 1px solid #FFF;
+    font-size: 14px;
+    width: 145px;
+    display: inline-block;
+    height: 35px;
+    transition-property: background-color, box-shadow;
+    transition-duration: 0.4s;
+} input[type="button"]:hover {background-color: slateblue; box-shadow: 0 0 2px 2px slateblue;}

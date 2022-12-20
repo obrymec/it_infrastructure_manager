@@ -1,0 +1,20 @@
+{
+  "name": "it-infrastructure-manager",
+  "version": "0.7.9",
+  "description": "An awesome web app for it infrastructure management",
+  "main": "app.js",
+  "author": "Obrymec",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.2",
+    "mongodb": "^4.2.2",
+    "nodemon": "^2.0.20",
+    "password-validator": "^5.2.1",
+    "underscore": "^1.13.2"
+  }
+}

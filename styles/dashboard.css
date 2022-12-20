@@ -1,0 +1,219 @@
+/*Single css design*/
+div.option-text label, div.option-icon svg, div.disconnect-text label, div.guest-icon svg {
+	cursor: pointer;
+}
+
+/*Active option text*/
+div.active-option > div.option-text {
+	color: #343434;
+	text-shadow: 0 0 5px steelblue;
+}
+
+/*Option text hover*/
+div.option:hover div.option-text {
+	color: #343434;
+	text-shadow: 0 0 5px steelblue;
+}
+
+/*Application icon*/
+div.app-icon {
+	transform: translateX(-1px);
+}
+
+/*Dashboard*/
+div.dashboard {
+	display: flex;
+}
+
+/*Active option icon*/
+div.active-option > div.option-icon > svg > g > .cls-1 {
+	stroke: steelblue;
+}
+
+/*Active option with fill and stroke properties*/
+div.active-option > div.option-icon > svg {
+	fill: steelblue;
+	stroke: steelblue;
+}
+
+/*Active option with fill property*/
+div.active-option > div.option-icon > svg > g {
+	fill: steelblue;
+}
+
+/*Active option icon hover*/
+div.option:hover > div.option-icon > svg > g > .cls-1 {
+	stroke: steelblue;
+}
+
+/*Active option hover with fill property*/
+div.option:hover > div.option-icon > svg {
+	fill: steelblue;
+}
+
+/*Active option hover with fill property on elements group*/
+div.option:hover > div.option-icon > svg > g {
+	fill: steelblue;
+}
+
+/*Views manager*/
+div.views-manager {
+	overflow-y: auto;
+	position: relative;
+	z-index: 0;
+	height: 100%;
+}
+
+/*Big views*/
+div.views {
+	overflow-y: auto;
+	position: relative;
+	z-index: 0;
+}
+
+/*Active option container*/
+div.active-option {
+	background-color: rgb(245, 245, 245);
+}
+
+/*Menu options container*/
+div.menu-options {
+	height: 100%;
+	padding-left: 15px;
+}
+
+/*Guest icon*/
+div.guest-icon > svg {
+	transform: translateY(1.5px);
+}
+
+/*Guest icon container*/
+div.guest-icon {
+	transition: transform 0.3s;
+}
+
+/*Disconnection text container*/
+div.disconnect-text {
+	transform: translateY(-1px);
+}
+
+/*Slider menu*/
+div.slider-menu {
+    background-color: steelblue;
+    padding: 25px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    z-index: 2;
+    gap: 60px;
+    left: -100%;
+}
+
+/*Slider menu options*/
+div.option {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    cursor: pointer;
+    padding: 5px 30px 6px 12px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    transition: background-color 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/*Slider menu options hover*/
+div.option:hover {
+	background-color: rgb(245, 245, 245);
+}
+
+/*Option text*/
+div.option-text {
+    color: #fff;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 15px;
+    transition-property: text-shadow, color;
+    transition-duration: 0.3s;
+    text-shadow: 0 0 0 transparent;    
+}
+
+/*Page data*/
+div.page-data {
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/*Static title*/
+div.static-title {
+    display: flex;
+    align-items: center;
+    padding: 4px 15px 4px 15px;
+    background-color: steelblue;
+    border-left: 2px solid rgb(245, 245, 245);
+    box-shadow: 0 0 5px rgb(80, 80, 80);
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid silver;
+    transform: translateY(-120%);
+}
+
+/*Big title text*/
+div.big-title {
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Big title label animation*/
+div.big-title > label {
+    animation: 1s textbloom 0ms forwards;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    text-shadow: 0 0 0 transparent;
+}
+
+/*Dropdown menu*/
+div.dropdown-menu {
+	transition-property: top, box-shadow;
+	position: absolute;
+	right: 0;
+	top: -100px;
+	z-index: 0;
+	transition-duration: 0.4s;
+	box-shadow: 0 2px 3px gray;
+	border-bottom-left-radius: 5px;
+}
+
+/*Disconnect option design*/
+div.disconnect-option {
+	display: flex;
+	background-color: steelblue;
+	padding: 4px 6px 4px 6px;
+	color: #FFF;
+	text-shadow: 0 0 0 transparent;
+	font-family: fantasy;
+	font-size: 14px;
+	justify-content: center;
+	align-items: center;
+	transition-property: background-color, text-shadow, box-shadow;
+	transition-duration: 0.3s;
+	cursor: pointer;
+	border-bottom-left-radius: 5px;
+	gap: 8px;
+}
+
+/*Disconnect option hover*/
+div.disconnect-option:hover {
+	background-color: darkblue;
+	text-shadow: 0 0 6px #fff;
+}

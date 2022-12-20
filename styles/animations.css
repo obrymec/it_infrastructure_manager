@@ -1,0 +1,83 @@
+/*Text bloom animation*/
+@keyframes textbloom {
+	from {text-shadow: 0 0 0 transparent;}
+	to {text-shadow: 0 0 15px #fff;}
+}
+
+/*Background blink animation*/
+@keyframes bg_blink {
+	0% {background-color: #FFF;}
+	50% {background-color: rgb(158, 205, 243);}
+	100% {background-color: #FFF;}
+}
+
+/*Container bloom animation*/
+@keyframes container_bloom {
+	0% {box-shadow: 0 0 0 transparent;}
+	10% {box-shadow: 0 0 8px steelblue;}
+	100% {box-shadow: 0 0 8px transparent;}
+}
+
+/*Translation animation*/
+@keyframes translate {
+	from {transform: translateY(-120%);}
+	to {transform: translateY(0);}
+}
+
+/*Fields resize animation*/
+@keyframes field_resize {
+	from {opacity: 0; width: 0;}
+	to {opacity: 1; width: 250px;}
+}
+
+/*Rotation animation*/
+@keyframes rotate {
+	from {transform: rotate(0);}
+	to {transform: rotate(360deg);}
+}
+
+/*Scaling animation*/
+@keyframes scale {
+	from {transform: scale(0);}
+	to {transform: scale(1);}
+}
+
+/*Fadeout animation*/
+@keyframes fadeout {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+
+/*Slider menu left translation*/
+@keyframes left_translation {
+	from {left: -100%;}
+	to {left: 0;}
+}
+
+/*Tabcontrol*/
+@keyframes tabcontrol {
+	from {top: -100%;}
+	to {top: 0;}
+}
+
+/*Crud view*/
+@keyframes crud_view {
+	from {bottom: -55px;}
+	to {bottom: 0;}
+}
+
+/*Message box*/
+@keyframes message_box {
+	0% {transform: translate(0, 0);}
+	20% {transform: translate(20px, 5px);}
+	40% {transform: translate(20px, 15px);}
+	60% {transform: translate(-30px, 15px);}
+	80% {transform: translate(-30px, 5px);}
+	100% {transform: translate(0, 0);}
+}
+
+/*Input field selection*/
+@keyframes input_selection {
+	from {box-shadow: 0 0 0 transparent;}
+	to {box-shadow: 0 0 6px steelblue;}
+}

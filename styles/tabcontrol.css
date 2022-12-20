@@ -1,0 +1,39 @@
+/*Tab control header*/
+div.tab-header {
+	background-image: linear-gradient(rgb(150, 150, 150), rgb(180, 180, 180), silver);
+	justify-content: flex-end;
+	display: inline-flex;
+	padding: 0 10px 0 10px;
+	align-items: center;
+	gap: 25px;
+	position: relative;
+	top: -100%;
+	animation: 0.5s tabcontrol 0ms forwards;
+}
+
+/*Tab control section*/
+div.tab-section {
+	cursor: pointer;
+	padding: 5px 0 5px 0;
+	transition-property: border-color;
+	transition-duration: 0.3s;
+}
+
+/*Tab control label section*/
+label.section-text {
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	font-family: Arial;
+	transition-property: color, text-shadow;
+	transition-duration: 0.3s;
+	text-shadow: 0 0 6px black;
+	display: inline-block;
+	transform: translateY(1px);
+}
+
+/*Tab control content*/
+div.tab-content {
+	overflow-y: auto;
+	height: 100%;
+}

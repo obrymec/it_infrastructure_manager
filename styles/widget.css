@@ -1,0 +1,143 @@
+/*Generic card options*/
+div.card-options, div.widget-options {
+	display: flex;
+	justify-content: flex-end;
+	gap: 15px;
+}
+
+/*Generic card attributes and data*/
+div.card-attr, div.card-datum {
+	margin-bottom: 15px;
+	color: #343434;
+	font-size: 15px;
+	font-family: verdana;
+}
+
+/*Generic card icon*/
+div.card-icon > svg {
+	transform: translateY(-5px);
+}
+
+/*Widget title*/
+div.widget-title {
+	text-shadow: 0 0 6px white;
+}
+
+/*Widget content*/
+div.widget-content {
+	overflow-y: auto;
+	height: 100%;
+}
+
+/*widget icon*/
+div.widget-icon > svg {
+	transform: translateY(1.5px);
+	cursor: pointer;
+}
+
+/*Generic card title*/
+div.ctt, div.widget-title {
+	width: 100%;
+	color: #fff;
+	font-size: 16px;
+	font-family: verdana;
+	letter-spacing: 1.5px;
+}
+
+/*Generic card content*/
+div.card-content {
+	display: flex;
+	align-items: center;
+	padding: 15px 15px 0 15px;
+	gap: 15px;
+}
+
+/*Generic data card*/
+div.data-card {
+	background-color: #fff;
+	box-shadow: 0 0 4px gray;
+	transition-property: box-shadow, background-color;
+	transition-duration: 0.3s;
+	display: none;
+	opacity: 0;
+}
+
+/*Generic card header*/
+div.card-header, div.widget-header {
+	background-color: steelblue;
+	font-family: verdana;
+	align-items: center;
+	padding: 6px 10px 6px 10px;
+	border-bottom: 1px ridge gray;
+	box-shadow: 0 1px 2px gray;
+}
+
+/*Generic card index*/
+div.ci {
+	border-radius: 25px;
+	padding: 4px 8px 4px 8px;
+	background-color: #FFF;
+	color: steelblue;
+	font-size: 14px;
+	transform: translateY(-0.5px);
+	text-align: center;
+}
+
+/*Card index label*/
+div.ci > label {
+	display: inline-block;
+	transform: translate(1px, 0.5px);
+}
+
+/*Generic card option*/
+button.card-option, button.widget-option, div.msg-options > button {
+	width: 160px;
+	padding: 8px 8px 8px 8px;
+	text-shadow: 0 0 0 transparent;
+	background-color: steelblue;
+	box-shadow: 0 0 3px black;
+	color: white;
+	transition-property: background-color, box-shadow, text-shadow, transform;
+	border-radius: 3px;
+	transition-duration: 0.3s;
+	font-family: verdana;
+	font-size: 14px;
+	letter-spacing: 1.5px;
+	box-shadow: 0 1px 3px grey;
+}
+
+/*Card and widget option hover*/
+button.card-option:hover, button.widget-option:hover, div.msg-options > button:hover {
+	background-color: rgb(61, 114, 157);
+	box-shadow: 0 0 5px black;
+	text-shadow: 0 0 5px #fff;
+}
+
+/*Disabled button*/
+button.disabled {
+	background-color: rgb(220, 220, 220);
+	pointer-events: none;
+	text-shadow: 0 0 6px white;
+}
+
+/*Generic widget box*/
+div.widget-box {
+	background-color: rgba(0, 0, 0, 0.6);
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(4px);
+	opacity: 0;
+	display: none;
+}
+
+/*Widget container*/
+div.widget-container {
+	background-color: #fff;
+	box-shadow: 0 0 6px #000;
+	display: flex;
+	flex-direction: column;
+	transform: scale(1.3);
+	opacity: 0;
+	transition-property: transform, opacity;
+	transition-duration: 0.2s;
+}

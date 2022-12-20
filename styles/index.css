@@ -1,0 +1,53 @@
+/*Body basics style configurations*/
+body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	background-color: rgb(245, 245, 245);
+}
+
+/*Buttons basics design configurations*/
+input[type="button"], button {
+	outline: none;
+	border: none;
+	cursor: pointer;
+	user-select: none;
+}
+
+/*Fixed element*/
+.fixed {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 0;
+}
+
+/*Basic center design*/
+.center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*Label basics style configurations*/
+label {
+	user-select: none;
+	letter-spacing: 1.5px;
+}
+
+/*Vertical flex box*/
+.vflex {
+	flex-direction: column;
+	display: flex;
+	height: 100%;
+}
+
+/*Centered graphic message*/
+.grc-msg {
+	color: grey;
+	font-size: 17px;
+	font-family: verdana;
+}

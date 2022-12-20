@@ -1,0 +1,36 @@
+<!--IT infrastructure app-->
+<!Doctype html>
+	<!--IT structure-->
+	<html lang = "fr">
+		<!--IT header-->
+		<head>
+			<!--Web page view title and style definition-->
+			<title>IT Infrastructure</title>
+			<!--Web page encoding: "UTF-8"-->
+			<meta charset = "utf-8" name = "viewport" content = "width=device-width, initial-scale=1.0"/>
+			<!--App favicon-->
+			<link rel = "shortcut icon" type = "image/ico" href = "./favicon.ico"/>
+			<link rel = "icon" type = "image/ico" href = "./favicon.ico"/>
+			<!--Styles importations-->
+			<link rel = "stylesheet" href = "./styles/index.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/widget.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/crud_view.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/dashboard.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/tabcontrol.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/animations.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/message_box.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/sign.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/loader.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/formulary.css" type = "text/css"/>
+			<link rel = "stylesheet" href = "./styles/history.css" type = "text/css"/>
+		</head>
+		<!--IT global container-->
+		<body>
+			<!--Other views-->
+			<div class = "views"></div><div class = "other-views"></div><div class = "dependencies"></div>
+			<script type = "text/javascript" src = "./vendors/jquery.js"></script><script type = "text/javascript">
+				// Loads all IT infrastructure manager dependencies.
+				$ (window).on ("load", () => $ ("div.dependencies").load ("./views/dependencies.html"));
+			</script>
+		</body>
+	</html>

@@ -1,0 +1,79 @@
+/*Equipment history*/
+div.equipment-history {
+	flex-direction: column;
+	display: flex;
+	height: 100%;
+}
+
+/*History header*/
+div.history-header {
+	display: flex;
+	align-items: center;
+	background-image: linear-gradient(rgb(230, 230, 230), rgb(195, 195, 195), rgb(230, 230, 230));
+	padding: 5px 10px 5px 5px;
+	user-select: none;
+	cursor: pointer;
+	border-bottom: 1px solid grey;
+}
+
+/*History header hover*/
+div.history-section:hover > div.history-header {
+	background-image: linear-gradient(rgb(200, 200, 200), white, rgb(200, 200, 200));
+}
+
+/*History arrow and text section hover*/
+div.history-section:hover > div.history-header> div.arrow-icon > svg, div.history-section:hover > div.history-header> div.text-section {
+	fill: #343434;
+	color: #343434;
+}
+
+/*History item count hover*/
+div.history-section:hover > div.history-header > div.item-count {
+	animation: 3s container_bloom 1s backwards;
+	animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+/*History content*/
+div.history-content {
+	background-color: rgb(240, 240, 240);
+	overflow-y: auto;
+	display: none;
+	height: 90.6%;
+	opacity: 0;
+	flex-direction: column;
+}
+
+/*History text section*/
+div.text-section {
+	font-size: 14px;
+	font-family: verdana;
+	width: 100%;
+	color: rgb(80, 80, 80);
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	transition: color 0.3s;
+}
+
+/*Text section label and arrow cursor shape*/
+div.text-section > label, div.arrow-icon > svg {
+	cursor: pointer;
+	transition: fill 0.3s;
+}
+
+/*History arrow icon*/
+div.arrow-icon {
+	transition: transform 0.3s;
+	transform: rotate(-180deg);
+	margin-top: -3px;
+}
+
+/*History message*/
+div.hmsg {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	color: grey;
+	visibility: visible;
+}

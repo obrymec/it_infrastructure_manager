@@ -1,0 +1,64 @@
+/*Message box*/
+div.message-box {
+	background-color: rgba(0, 0, 0, 0.6);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	backdrop-filter: blur(4px);
+}
+
+/*Message box header*/
+div.msg-header {
+	padding: 5px 6px 6px 6px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	color: #fff;
+	background-color: steelblue;
+	font-size: 15px;
+	font-family: verdana;
+	font-weight: bold;
+	text-align: center;
+}
+
+/*Message box content*/
+div.msg-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	background-color: #fff;
+	width: 370px;
+	padding: 10px 12px 10px 6px;
+}
+
+/*Message box options container*/
+div.msg-options {
+	display: none;
+	justify-content: flex-end;
+	border-top: 1px solid silver;
+	padding: 10px;
+	gap: 15px;
+	background-color: #fff;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/*Message box text content*/
+div.text-content {
+	width: 100%;
+	margin-top: -3px;
+	text-align: justify;
+	font-size: 15px;
+	font-family: verdana;
+}
+
+/*Message box container*/
+div.msg-container {
+	box-shadow: 0 0 10px #000;
+}
+
+/*Message box button option*/
+div.msg-options > button {
+	width: 120px;
+}

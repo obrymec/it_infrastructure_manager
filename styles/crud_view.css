@@ -1,0 +1,224 @@
+/*Crud view header*/
+div.crud-header {
+	display: flex;
+	align-items: center;
+	padding: 8px 10px 8px 10px;
+	gap: 20px;
+	box-shadow: 0 2px 3px grey;
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: silver;
+	margin-top: -47px;
+	transition: margin-top 0.3s;
+}
+
+/*Search field container*/
+div.search-field {
+	width: 100%;
+	display: flex;
+}
+
+/*Search field container hover*/
+div.search-field:hover > div.field-clear > svg {
+	visibility: visible;
+}
+
+/*Searcher icon*/
+div.searcher {
+	position: absolute;
+	margin-left: 8px;
+	margin-top: 5px;
+}
+
+/*Search input field*/
+div.search-field > input[type="text"] {
+   border: none;
+   border-radius: 30px;
+   height: 20px;
+   width: 97%;
+   padding: 5px 32px 5px 35px;
+   outline: none;
+   font-size: 14px;
+   transition: color 0.4s;
+   font-weight: normal;
+   box-shadow: inset 0 2px 2.5px gray;
+   font-family: verdana;
+}
+
+/*Search input hover*/
+div.search-field > input[type="text"]:hover {
+	font-weight: bold;
+	color: steelblue;
+}
+
+/*Search input field placeholder*/
+div.search-field > input[type="text"]::placeholder {
+	color: silver;
+	font-style: italic;
+	transform: translateY(1px);
+	user-select: none;
+}
+
+/*Clear field icon*/
+div.field-clear {
+	margin-top: 6px;
+	transform: translateX(-28px);
+	margin-right: -10px
+}
+
+/*Real icon design*/
+div.field-clear > svg {
+	cursor: pointer;
+	position: absolute;
+	visibility: hidden;
+}
+
+/*Total item count*/
+div.item-count {
+	border-radius: 25px;
+	padding: 4px 8px 4px 8px;
+	background-color: rgb(120, 120, 120);
+	color: #FFF;
+	text-shadow: 0 0 3px #fff;
+	font-size: 16px;
+	text-align: center;
+}
+
+/*Total item count hover*/
+div.item-count > label {
+	display: inline-block;
+	transform: translate(1px, 0.4px);
+}
+
+/*Adder, move up and move down icons containers*/
+div.ari, div.mui, div.mdi, div.shi, div.rfi {
+	width: 30px;
+	height: 30px;
+	background-color: rgb(235, 235, 235);
+	border-radius: 40px;
+	border: 1px ridge silver;
+	padding: 2px 6px 6px 2px;
+	cursor: pointer;
+}
+
+/*Main option: add, search and refresh*/
+div.ar, div.sh, div.rf {
+	margin-top: -1px;
+}
+
+/*Adder icon container*/
+div.ari {
+	animation: 3s container_bloom 1s backwards;
+	animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+/*Adder icon container hover*/
+div.ari:hover, div.shi:hover, div.rfi:hover {
+	border-color: steelblue;
+}
+
+/*Move up and down icon container*/
+div.mu, div.md {
+	visibility: hidden;
+	opacity: 0;
+	transition-property: transform, opacity, box-shadow;
+	transition-duration: 0.3s;
+}
+
+/*Move up icon container*/
+div.mu {
+	transform: translate(20px, -100px);
+}
+
+/*Move down icon container*/
+div.md {
+	transform: translate(-20px, -100px);
+}
+
+/*Move up icon container hover*/
+div.mu > div.mui:hover, div.md > div.mdi:hover {
+	box-shadow: 0 0 6px steelblue;
+}
+
+/*Adder icon hover*/
+div.ari:hover > svg > g > line.cls-2, div.shi:hover > svg {
+	stroke: steelblue;
+}
+
+/*Refresh icon hover*/
+div.rfi:hover > svg {
+	fill: steelblue;
+}
+
+/*Move up icon hover*/
+div.mui:hover > a > svg {
+	fill: steelblue;
+}
+
+/*Move up icon hover*/
+div.mdi:hover > a > svg {
+	fill: steelblue;
+}
+
+/*Adder icon*/
+div.ari > svg {
+	transform: translate(-2.5px, -2.5px);
+	cursor: pointer;
+}
+
+/*Searcher icon*/
+div.shi > svg {
+	transform: translate(4.5px, 4.5px);
+}
+
+/*Refresh icon*/
+div.rfi > svg {
+	transform: translate(7px, 7px);
+}
+
+/*Move up icon*/
+div.mui > a > svg {
+	transform: translate(3px, 3px);
+}
+
+/*Move up icon*/
+div.mdi > a > svg {
+	transform: rotate(180deg) translate(-3px, -5px);
+}
+
+/*Crud view content*/
+div.crud-content {
+	height: 100%;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	scroll-behavior: smooth;
+}
+
+/*Crud view toolbar*/
+div.crud-toolbar {
+	display: inline-flex;
+	transition: width 0.4s;
+	background-color: silver;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	padding-top: 6px;
+	align-items: center;
+	box-shadow: 0 0 6px black;
+	position: relative;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	z-index: 1;
+	bottom: -55px;
+	animation: 0.3s crud_view 0ms forwards;
+}
+
+/*Main options*/
+div.main-options {
+	display: inline-flex;
+	width: 100%;
+	gap: 10px;
+}
