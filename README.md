@@ -45,7 +45,7 @@ sudo npm install yarn --global
 
 ### <u>Project cloning</u>:
 ```sh
-git clone https://github.com/obrymec/It-Infrastructure-Manager it-infrastructure-manager/
+git clone git@github.com:obrymec/It-Infrastructure-Manager.git it-infrastructure-manager/
 ```
 
 ### <u>Install project dependencies</u>:
