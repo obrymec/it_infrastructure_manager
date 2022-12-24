@@ -16,7 +16,6 @@ This is the final result of the project:<br/><br/>
 [![Watch the video](https://img.youtube.com/vi/3gKHXcMMDlA/maxresdefault.jpg)](https://youtu.be/3gKHXcMMDlA)
 
 ## Project installation
-
 ### <u>Install curl</u>:
 ```sh
 sudo apt install curl
