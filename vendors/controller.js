@@ -5,7 +5,7 @@ const dbmanager = require ("./db_manager.js");
 const _ = require ("underscore");
 
 // Database link configurations.
-dbmanager.set_base_link ("mongodb+srv://it_manager:12345@cluster0.v0aj1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+dbmanager.set_base_link ("mongodb+srv://it_manager:appsmanager@cluster0.v0aj1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 
 // Checks whether a number input field respects the imposed restrictions.
 function _check_number_input (inp, ans) {
