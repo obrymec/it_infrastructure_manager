@@ -1,219 +1,231 @@
-/*Single css design*/
-div.option-text label, div.option-icon svg, div.disconnect-text label, div.guest-icon svg {
+/**
+* @project: It Manager - https://it-infrastructure-manager.onrender.com
+* @author: Obrymec - obrymecsprinces@gmail.com
+* @fileoverview: dashboard stylesheet.
+* @created: 2021-12-17
+* @updated: 2024-04-07
+* @file: dashboard.css
+* @supported: DESKTOP
+* @version: 0.0.2
+*/
+
+/* Single css design */
+div.disconnect-text label, div.guest-icon svg,
+div.option-text label, div.option-icon svg {
 	cursor: pointer;
 }
 
-/*Active option text*/
+/* Active option text */
 div.active-option > div.option-text {
-	color: #343434;
-	text-shadow: 0 0 5px steelblue;
+	text-shadow: 0 0 5px var(--primary-900);
+	color: var(--black-700);
 }
 
-/*Option text hover*/
+/* Option text hover */
 div.option:hover div.option-text {
-	color: #343434;
-	text-shadow: 0 0 5px steelblue;
+	text-shadow: 0 0 5px var(--primary-900);
+	color: var(--black-700);
 }
 
-/*Application icon*/
+/* Application icon */
 div.app-icon {
 	transform: translateX(-1px);
 }
 
-/*Dashboard*/
+/* Dashboard */
 div.dashboard {
 	display: flex;
 }
 
-/*Active option icon*/
+/* Active option icon */
 div.active-option > div.option-icon > svg > g > .cls-1 {
-	stroke: steelblue;
+	stroke: var(--primary-900);
 }
 
-/*Active option with fill and stroke properties*/
+/* Active option with fill and stroke properties */
 div.active-option > div.option-icon > svg {
-	fill: steelblue;
-	stroke: steelblue;
+	stroke: var(--primary-900);
+	fill: var(--primary-900);
 }
 
-/*Active option with fill property*/
+/* Active option with fill property */
 div.active-option > div.option-icon > svg > g {
-	fill: steelblue;
+	fill: var(--primary-900);
 }
 
-/*Active option icon hover*/
+/* Active option icon hover */
 div.option:hover > div.option-icon > svg > g > .cls-1 {
-	stroke: steelblue;
+	stroke: var(--primary-900);
 }
 
-/*Active option hover with fill property*/
+/* Active option hover with fill property */
 div.option:hover > div.option-icon > svg {
-	fill: steelblue;
+	fill: var(--primary-900);
 }
 
-/*Active option hover with fill property on elements group*/
+/* Active option hover with fill property on elements group */
 div.option:hover > div.option-icon > svg > g {
-	fill: steelblue;
+	fill: var(--primary-900);
 }
 
-/*Views manager*/
+/* Views manager */
 div.views-manager {
-	overflow-y: auto;
 	position: relative;
-	z-index: 0;
+	overflow-y: auto;
 	height: 100%;
+	z-index: 0;
 }
 
-/*Big views*/
+/* Big views */
 div.views {
-	overflow-y: auto;
 	position: relative;
+	overflow-y: auto;
 	z-index: 0;
 }
 
-/*Active option container*/
+/* Active option container */
 div.active-option {
-	background-color: rgb(245, 245, 245);
+	background-color: var(--white-700);
 }
 
-/*Menu options container*/
+/* Menu options container */
 div.menu-options {
-	height: 100%;
 	padding-left: 15px;
+	height: 100%;
 }
 
-/*Guest icon*/
+/* Guest icon */
 div.guest-icon > svg {
 	transform: translateY(1.5px);
 }
 
-/*Guest icon container*/
+/* Guest icon container */
 div.guest-icon {
 	transition: transform 0.3s;
 }
 
-/*Disconnection text container*/
+/* Disconnection text container */
 div.disconnect-text {
 	transform: translateY(-1px);
 }
 
-/*Slider menu*/
+/* Slider menu */
 div.slider-menu {
-    background-color: steelblue;
-    padding: 25px 0 0 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    align-items: center;
-    z-index: 2;
-    gap: 60px;
-    left: -100%;
+	background-color: var(--primary-900);
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	padding: 25px 0 0 0;
+	position: relative;
+	display: flex;
+	left: -100%;
+	z-index: 2;
+	gap: 60px;
 }
 
-/*Slider menu options*/
+/* Slider menu options */
 div.option {
-    display: flex;
-    align-items: center;
-    margin-top: 25px;
-    cursor: pointer;
-    padding: 5px 30px 6px 12px;
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    transition: background-color 0.3s;
-    opacity: 0;
-    visibility: hidden;
+	transition: background-color 0.3s;
+	border-bottom-left-radius: 25px;
+	border-top-left-radius: 25px;
+	padding: 5px 30px 6px 12px;
+	align-items: center;
+	visibility: hidden;
+	margin-top: 25px;
+	cursor: pointer;
+	display: flex;
+	opacity: 0;
 }
 
-/*Slider menu options hover*/
+/* Slider menu options hover */
 div.option:hover {
-	background-color: rgb(245, 245, 245);
+	background-color: var(--white-700);
 }
 
-/*Option text*/
+/* Option text */
 div.option-text {
-    color: #fff;
-    font-size: 15px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 15px;
-    transition-property: text-shadow, color;
-    transition-duration: 0.3s;
-    text-shadow: 0 0 0 transparent;    
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	transition-property: text-shadow, color;
+	text-shadow: 0 0 0 transparent;
+	transition-duration: 0.3s;
+	color: var(--white);
+	margin-left: 15px;
+	font-size: 15px;
 }
 
-/*Page data*/
+/* Page data */
 div.page-data {
-    width: 100%;
-    position: relative;
-    z-index: 0;
-    display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	position: relative;
+	display: flex;
+	width: 100%;
+	z-index: 0;
 }
 
-/*Static title*/
+/* Static title */
 div.static-title {
-    display: flex;
-    align-items: center;
-    padding: 4px 15px 4px 15px;
-    background-color: steelblue;
-    border-left: 2px solid rgb(245, 245, 245);
-    box-shadow: 0 0 5px rgb(80, 80, 80);
-    position: relative;
-    z-index: 1;
-    border-bottom: 1px solid silver;
-    transform: translateY(-120%);
+	border-left: 2px solid var(--white-700);
+	border-bottom: 1px solid var(--silver);
+	background-color: var(--primary-900);
+	box-shadow: 0 0 5px var(--gray-900);
+	transform: translateY(-120%);
+	padding: 4px 15px 4px 15px;
+	align-items: center;
+	position: relative;
+	display: flex;
+	z-index: 1;
 }
 
-/*Big title text*/
+/* Big title text */
 div.big-title {
-    width: 100%;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+	color: var(--white);
+	font-weight: 400;
+	font-size: 16px;
+	width: 100%;
 }
 
-/*Big title label animation*/
+/* Big title label animation */
 div.big-title > label {
-    animation: 1s textbloom 0ms forwards;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: linear;
-    text-shadow: 0 0 0 transparent;
+	animation: 1s textbloom 0ms forwards;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-direction: alternate;
+	text-shadow: 0 0 0 transparent;
 }
 
-/*Dropdown menu*/
+/* Dropdown menu */
 div.dropdown-menu {
 	transition-property: top, box-shadow;
+	box-shadow: 0 2px 3px var(--grey);
+	border-bottom-left-radius: 5px;
+	transition-duration: 0.4s;
 	position: absolute;
-	right: 0;
 	top: -100px;
 	z-index: 0;
-	transition-duration: 0.4s;
-	box-shadow: 0 2px 3px gray;
-	border-bottom-left-radius: 5px;
+	right: 0;
 }
 
-/*Disconnect option design*/
+/* Disconnect option design */
 div.disconnect-option {
-	display: flex;
-	background-color: steelblue;
-	padding: 4px 6px 4px 6px;
-	color: #FFF;
-	text-shadow: 0 0 0 transparent;
-	font-family: fantasy;
-	font-size: 14px;
-	justify-content: center;
-	align-items: center;
 	transition-property: background-color, text-shadow, box-shadow;
-	transition-duration: 0.3s;
-	cursor: pointer;
+	background-color: var(--primary-900);
+	text-shadow: 0 0 0 transparent;
 	border-bottom-left-radius: 5px;
+	transition-duration: 0.3s;
+	padding: 4px 6px 4px 6px;
+	justify-content: center;
+	font-family: fantasy;
+	color: var(--white);
+	align-items: center;
+	cursor: pointer;
+	font-size: 14px;
+	display: flex;
 	gap: 8px;
 }
 
-/*Disconnect option hover*/
+/* Disconnect option hover */
 div.disconnect-option:hover {
-	background-color: darkblue;
-	text-shadow: 0 0 6px #fff;
+	background-color: var(--darkblue-900);
+	text-shadow: 0 0 6px var(--white);
 }

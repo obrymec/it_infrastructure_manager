@@ -1,0 +1,39 @@
+/**
+* @project: It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview: Defines stylesheets global colors theme variables.
+* @author: Obrymec - obrymecsprinces@gmail.com
+* @created: 2021-12-17
+* @updated: 2024-04-07
+* @file: variables.css
+* @supported: DESKTOP
+* @version: 0.0.2
+*/
+
+/* Colors theme */
+:root {
+	--primary-400: rgb(158, 205, 243);
+	--primary-800: rgb(61, 114, 157);
+	--silver-600: rgb(230, 230, 230);
+	--silver-700: rgb(195, 195, 195);
+	--silver-800: rgb(200, 200, 200);
+	--white-600: rgb(235, 235, 235);
+	--white-800: rgb(240, 240, 240);
+	--white-700: rgb(245, 245, 245);
+	--white-500: rgb(210, 210, 210);
+	--white-400: rgb(220, 220, 220);
+	--black-800: rgba(0, 0, 0, 0.6);
+	--grey-600: rgb(180, 180, 180);
+	--grey-700: rgb(150, 150, 150);
+	--grey-800: rgb(120, 120, 120);
+	--error-900: rgb(255, 0, 76);
+	--gray-900: rgb(80, 80, 80);
+	--slateblue-900: slateblue; 
+	--darkblue-900: darkblue;
+	--primary-900: steelblue;
+	--darkblue-300: skyblue;
+	--black-700: #343434;
+	--silver: silver;
+	--black: black;
+	--white: #fff;
+	--grey: gray;
+}

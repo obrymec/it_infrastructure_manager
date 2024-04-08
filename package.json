@@ -1,20 +1,31 @@
 {
-  "name": "it-infrastructure-manager",
-  "version": "0.7.9",
-  "description": "An awesome web app for it infrastructure management",
-  "main": "app.js",
-  "author": "Obrymec",
-  "license": "MIT",
-  "scripts": {
-    "start": "nodemon server.js"
-  },
-  "dependencies": {
-    "body-parser": "^1.19.1",
-    "email-validator": "^2.0.4",
-    "express": "^4.17.2",
-    "mongodb": "^4.2.2",
-    "nodemon": "^2.0.20",
+	"description": "An awesome web app for it infrastructure management.",
+	"author": "Obrymec - obrymecsprinces@gmail.com",
+	"name": "it-infrastructure-manager",
+	"main": "./server.js",
+	"version": "1.0.0",
+	"private": "false",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/obrymec/it_infrastructure_manager/issues"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.20"
+	},
+	"repository": {
+		"url": "https://github.com/obrymec/it_infrastructure_manager.git",
+		"type": "git"
+	},
+	"scripts": {
+		"dev": "nodemon ./server.js",
+		"start": "node ./server.js"
+	},
+	"dependencies": {
     "password-validator": "^5.2.1",
-    "underscore": "^1.13.2"
-  }
+    "email-validator": "^2.0.4",
+		"body-parser": "^1.19.1",
+    "underscore": "^1.13.2",
+    "express": "^4.17.2",
+    "mongodb": "^4.2.2"
+	}
 }

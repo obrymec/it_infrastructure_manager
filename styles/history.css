@@ -1,79 +1,97 @@
-/*Equipment history*/
+/**
+* @project: It Manager - https://it-infrastructure-manager.onrender.com
+* @author: Obrymec - obrymecsprinces@gmail.com
+* @fileoverview: history stylesheet.
+* @created: 2021-12-17
+* @updated: 2024-04-07
+* @supported: DESKTOP
+* @file: history.css
+* @version: 0.0.2
+*/
+
+/* Equipment history */
 div.equipment-history {
 	flex-direction: column;
 	display: flex;
 	height: 100%;
 }
 
-/*History header*/
+/* History header */
 div.history-header {
-	display: flex;
-	align-items: center;
-	background-image: linear-gradient(rgb(230, 230, 230), rgb(195, 195, 195), rgb(230, 230, 230));
+	border-bottom: 1px solid var(--grey);
 	padding: 5px 10px 5px 5px;
+	align-items: center;
 	user-select: none;
 	cursor: pointer;
-	border-bottom: 1px solid grey;
+	display: flex;
+	background-image: linear-gradient(
+		var(--silver-600),
+		var(--silver-700),
+		var(--silver-600)
+	);
 }
 
-/*History header hover*/
+/* History header hover */
 div.history-section:hover > div.history-header {
-	background-image: linear-gradient(rgb(200, 200, 200), white, rgb(200, 200, 200));
+	background-image: linear-gradient(
+		var(--silver-800), var(--white) var(--silver-800)
+	);
 }
 
-/*History arrow and text section hover*/
-div.history-section:hover > div.history-header> div.arrow-icon > svg, div.history-section:hover > div.history-header> div.text-section {
-	fill: #343434;
-	color: #343434;
+/* History arrow and text section hover */
+div.history-section:hover > div.history-header> div.arrow-icon > svg,
+div.history-section:hover > div.history-header> div.text-section {
+	color: var(--black-700);
+	fill: var(--black-700);
 }
 
-/*History item count hover*/
+/* History item count hover */
 div.history-section:hover > div.history-header > div.item-count {
 	animation: 3s container_bloom 1s backwards;
+	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
 }
 
-/*History content*/
+/* History content */
 div.history-content {
-	background-color: rgb(240, 240, 240);
+	background-color: var(--white-800);
+	flex-direction: column;
 	overflow-y: auto;
 	display: none;
 	height: 90.6%;
 	opacity: 0;
-	flex-direction: column;
 }
 
-/*History text section*/
+/* History text section */
 div.text-section {
-	font-size: 14px;
-	font-family: verdana;
-	width: 100%;
-	color: rgb(80, 80, 80);
-	font-weight: bold;
-	letter-spacing: 1.5px;
+	color: var(--gray-900);
 	transition: color 0.3s;
+	letter-spacing: 1.5px;
+	font-family: verdana;
+	font-weight: bold;
+	font-size: 14px;
+	width: 100%;
 }
 
-/*Text section label and arrow cursor shape*/
+/* Text section label and arrow cursor shape */
 div.text-section > label, div.arrow-icon > svg {
-	cursor: pointer;
 	transition: fill 0.3s;
+	cursor: pointer;
 }
 
-/*History arrow icon*/
+/* History arrow icon */
 div.arrow-icon {
 	transition: transform 0.3s;
 	transform: rotate(-180deg);
 	margin-top: -3px;
 }
 
-/*History message*/
+/* History message */
 div.hmsg {
+	transform: translate(-50%, -50%);
+	visibility: visible;
 	position: absolute;
+	color: var(--grey);
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%, -50%);
-	color: grey;
-	visibility: visible;
 }

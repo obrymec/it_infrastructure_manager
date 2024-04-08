@@ -1,64 +1,75 @@
-/*Message box*/
+/**
+* @project: It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview: Message box component stylesheet.
+* @author: Obrymec - obrymecsprinces@gmail.com
+* @file: message_box.css
+* @created: 2021-12-17
+* @updated: 2024-04-07
+* @supported: DESKTOP
+* @version: 0.0.2
+*/
+
+/* Message box */
 div.message-box {
-	background-color: rgba(0, 0, 0, 0.6);
-	display: none;
-	align-items: center;
-	justify-content: center;
-	opacity: 0;
+	background-color: var(--black-800);
 	backdrop-filter: blur(4px);
-}
-
-/*Message box header*/
-div.msg-header {
-	padding: 5px 6px 6px 6px;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	color: #fff;
-	background-color: steelblue;
-	font-size: 15px;
-	font-family: verdana;
-	font-weight: bold;
-	text-align: center;
-}
-
-/*Message box content*/
-div.msg-content {
-	display: flex;
-	align-items: center;
 	justify-content: center;
-	gap: 10px;
-	background-color: #fff;
-	width: 370px;
-	padding: 10px 12px 10px 6px;
+	align-items: center;
+	display: none;
+	opacity: 0;
 }
 
-/*Message box options container*/
+/* Message box header */
+div.msg-header {
+	background-color: var(--primary-900);
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	padding: 5px 6px 6px 6px;
+	font-family: verdana;
+	color: var(--white);
+	text-align: center;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+/* Message box content */
+div.msg-content {
+	background-color: var(--white);
+	padding: 10px 12px 10px 6px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	width: 370px;
+	gap: 10px;
+}
+
+/* Message box options container */
 div.msg-options {
-	display: none;
+	border-top: 1px solid var(--silver);
+	border-bottom-right-radius: 5px;
+	background-color: var(--white);
+	border-bottom-left-radius: 5px;
 	justify-content: flex-end;
-	border-top: 1px solid silver;
+	display: none;
 	padding: 10px;
 	gap: 15px;
-	background-color: #fff;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
 }
 
-/*Message box text content*/
+/* Message box text content */
 div.text-content {
-	width: 100%;
-	margin-top: -3px;
-	text-align: justify;
-	font-size: 15px;
 	font-family: verdana;
+	text-align: justify;
+	margin-top: -3px;
+	font-size: 15px;
+	width: 100%;
 }
 
-/*Message box container*/
+/* Message box container */
 div.msg-container {
-	box-shadow: 0 0 10px #000;
+	box-shadow: 0 0 10px var(--black);
 }
 
-/*Message box button option*/
+/* Message box button option */
 div.msg-options > button {
 	width: 120px;
 }

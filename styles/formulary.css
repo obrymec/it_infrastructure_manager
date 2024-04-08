@@ -1,4 +1,15 @@
-/*Formulary container*/
+/**
+* @project: It Manager - https://it-infrastructure-manager.onrender.com
+* @author: Obrymec - obrymecsprinces@gmail.com
+* @fileoverview: formulary stylesheet.
+* @created: 2021-12-17
+* @updated: 2024-04-07
+* @file: formulary.css
+* @supported: DESKTOP
+* @version: 0.0.2
+*/
+
+/* Formulary container */
 div.formulary, div.formulary > fieldset {
 	flex-direction: column;
 	align-items: center;
@@ -7,77 +18,78 @@ div.formulary, div.formulary > fieldset {
 	gap: 15px;
 }
 
-/*Fieldset form*/
+/* Fieldset form */
 div.formulary > fieldset {
-	width: 96%;
-	border-color: rgb(240, 240, 240);
-	border-radius: 4px;
+	border-color: var(--white-800);
 	letter-spacing: 1.5px;
 	font-family: verdana;
+	border-radius: 4px;
 	font-weight: bold;
 	font-size: 15px;
+	width: 96%;
 }
 
-/*Formulary dual fields*/
+/* Formulary dual fields */
 div.form-dual-fields {
 	display: flex;
 	width: 100%;
 	gap: 15px;
 }
 
-/*Error message label*/
+/* Error message label */
 div.mgs-error {
-	color: rgb(255, 0, 76);
+	color: var(--error-900);
 	text-align: justify;
 	margin-top: 4px;
 	font-size: 12px;
 }
 
-/*Input formulary field*/
+/* Input formulary field */
 div.form-field {
 	transform: translate3d(0, 0, 0);
 	align-items: center;
 	display: flex;
 }
 
-/*Clear icon hover*/
-div.form-field:hover > div.form-cls-icon > svg, div.form-field:hover > div.form-cpd-icon > svg {
+/* Clear icon hover */
+div.form-field:hover > div.form-cls-icon > svg,
+div.form-field:hover > div.form-cpd-icon > svg {
+	fill: var(--primary-900);
 	visibility: visible;
-	fill: steelblue;
 }
 
-/*Input formulary container*/
+/* Input formulary container */
 div.form-container {
 	width: 100%;
 }
 
-/*Hides any tag*/
+/* Hides any tag */
 div.face-off {
 	display: none;
 }
 
-/*Clear icon*/
+/* Clear icon */
 div.form-cls-icon > svg, div.form-cpd-icon > svg {
+	fill: var(--silver);
 	position: absolute;
 	visibility: hidden;
 	cursor: pointer;
-	fill: silver;
 }
 
-/*Clear icon container*/
+/* Clear icon container */
 div.form-cls-icon, div.form-cpd-icon {
 	transform: translateX(-27px);
 	margin-top: -20px;
 }
 
-/*Input*/
+/* Input */
 div.form-field > input, div.form-field > select, div.form-field > textarea {
-	box-shadow: inset 0 3px 3px rgb(210, 210, 210);
 	transition-property: color, box-shadow, border;
+	box-shadow: inset 0 3px 3px var(--white-500);
+	border: 1px solid var(--silver);
+	background-color: var(--white);
 	padding: 2px 30px 2px 12px;
 	transition-duration: 0.3s;
-	border: 1px solid silver;
-	background-color: #fff;
 	letter-spacing: 1.5px;
 	font-family: verdana;
 	border-radius: 5px;
@@ -88,75 +100,81 @@ div.form-field > input, div.form-field > select, div.form-field > textarea {
 	width: 100%;
 }
 
-/*Dropdown select*/
+/* Dropdown select */
 div.form-field > select {
 	box-shadow: none;
 	height: 36px;
 }
 
-/*Dropdown select hover*/
+/* Dropdown select hover */
 div.form-field:hover > select {
-	border: 1px solid steelblue;
-	color: steelblue;
+	border: 1px solid var(--primary-900);
+	color: var(--primary-900);
 }
 
-/*Dropdown icon select hover*/
+/* Dropdown icon select hover */
 div.form-field:hover > div.form-drop-arrow > svg > path {
-	stroke: steelblue;
+	stroke: var(--primary-900);
 }
 
-/*Dropdown select icon*/
+/* Dropdown select icon */
 div.form-drop-arrow > svg {
 	transform: translate(-24px, -3px);
 	pointer-events: none;
 	position: absolute;
 }
 
-/*Textarea*/
+/* Textarea */
 div.form-field > textarea {
 	padding-top: 10px;
 	overflow-y: auto;
-	resize: none;
 	height: 120px;
+	resize: none;
 }
 
-/*Input field error*/
-div.field-error > input, div.field-error > textarea, div.field-error > select {
-	box-shadow: 0 0 6px rgb(255, 0, 76);
-	border: 1px solid rgb(255, 0, 76);
+/* Input field error */
+div.field-error > textarea,
+div.field-error > select,
+div.field-error > input {
+	box-shadow: 0 0 6px var(--error-900);
+	border: 1px solid var(--error-900);
 }
 
-/*Input field disabled*/
+/* Input field disabled */
 div.field-disabled > input {
-	background-color: rgb(220, 220, 220);
-	border: 1px solid silver;
+	background-color: var(--white-400);
+	border: 1px solid var(--silver);
 	pointer-events: none;
+	color: var(--grey);
 	font-weight: bold;
 	box-shadow: none;
-	color: grey;
 	animation: none;
 }
 
-/*Input field placeholder text*/
-div.form-field > input::placeholder, div.form-field > textarea::placeholder {
+/* Input field placeholder text */
+div.form-field > textarea::placeholder,
+div.form-field > input::placeholder {
 	transition: color 0.3s ease-in-out;
+	color: var(--silver);
 	font-style: italic;
 	user-select: none;
-	color: silver;
 }
 
-/*Placeholder focus*/
-div.form-field:hover > input::placeholder, div.form-field:hover > textarea::placeholder {
-	color: steelblue;
+/* Placeholder focus */
+div.form-field:hover > textarea::placeholder,
+div.form-field:hover > input::placeholder {
+	color: var(--primary-900);
 }
 
-/*Input focus animation*/
-div.form-field > input:focus, div.form-field > select:focus, div.form-field > textarea:focus {
+/* Input focus animation */
+div.form-field > textarea:focus,
+div.form-field > select:focus,
+div.form-field > input:focus {
 	animation: 600ms input_selection 0ms forwards;
+	border: 1px solid var(--primary-900);
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	animation-direction: alternate;
-	border: 1px solid steelblue;
+	color: var(--primary-900);
 	font-weight: bold;
-	color: steelblue;
 }

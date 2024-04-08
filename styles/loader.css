@@ -1,30 +1,41 @@
-/*It loader and his container*/
+/**
+* @project: It Manager - https://it-infrastructure-manager.onrender.com
+* @author: Obrymec - obrymecsprinces@gmail.com
+* @fileoverview: Loader component stylesheet.
+* @created: 2021-12-17
+* @updated: 2024-04-07
+* @supported: DESKTOP
+* @file: loader.css
+* @version: 0.0.2
+*/
+
+/* It loader and his container */
 div.it-loader, div.it-ld-ctr {
-	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	display: flex;
 }
 
-/*Loader text*/
+/* Loader text */
 div.loader-text > label {
-	font-size: 16px;
+	color: var(--grey-700);
 	font-family: verdana;
-	color: rgb(150, 150, 150);
-	opacity: 0;
 	font-style: italic;
+	font-size: 16px;
+	opacity: 0;
 }
 
-/*It loader container*/
+/* It loader container */
 div.it-ld-ctr {
 	gap: 8px;
 }
 
-/*Loader icon*/
+/* Loader icon */
 div.loader-icon > svg {
 	transform: scale(0);
 }
 
-/*Loader text container*/
+/* Loader text container */
 div.loader-text {
 	transform: translateY(-1px);
 }

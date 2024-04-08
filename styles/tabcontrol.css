@@ -1,38 +1,51 @@
-/*Tab control header*/
+/**
+* @project: It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview: Tabcontrol component stylesheet.
+* @author: Obrymec - obrymecsprinces@gmail.com
+* @file: tabcontrol.css
+* @created: 2021-12-17
+* @updated: 2024-04-07
+* @supported: DESKTOP
+* @version: 0.0.2
+*/
+
+/* Tab control header */
 div.tab-header {
-	background-image: linear-gradient(rgb(150, 150, 150), rgb(180, 180, 180), silver);
+	animation: 0.5s tabcontrol 0ms forwards;
 	justify-content: flex-end;
-	display: inline-flex;
 	padding: 0 10px 0 10px;
+	display: inline-flex;
 	align-items: center;
-	gap: 25px;
 	position: relative;
 	top: -100%;
-	animation: 0.5s tabcontrol 0ms forwards;
+	gap: 25px;
+	background-image: linear-gradient(
+		var(--grey-700), var(--grey-600), var(--silver)
+	);
 }
 
-/*Tab control section*/
+/* Tab control section */
 div.tab-section {
-	cursor: pointer;
-	padding: 5px 0 5px 0;
 	transition-property: border-color;
 	transition-duration: 0.3s;
+	padding: 5px 0 5px 0;
+	cursor: pointer;
 }
 
-/*Tab control label section*/
+/* Tab control label section */
 label.section-text {
-	color: #fff;
+	transition-property: color, text-shadow;
+	text-shadow: 0 0 6px var(--black);
+	transform: translateY(1px);
+	transition-duration: 0.3s;
+	display: inline-block;
+	color: var(--white);
+	font-family: Arial;
 	cursor: pointer;
 	font-size: 14px;
-	font-family: Arial;
-	transition-property: color, text-shadow;
-	transition-duration: 0.3s;
-	text-shadow: 0 0 6px black;
-	display: inline-block;
-	transform: translateY(1px);
 }
 
-/*Tab control content*/
+/* Tab control content */
 div.tab-content {
 	overflow-y: auto;
 	height: 100%;

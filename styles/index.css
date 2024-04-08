@@ -1,53 +1,64 @@
-/*Body basics style configurations*/
+/**
+* @project: It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview: The base stylesheet of all components.
+* @author: Obrymec - obrymecsprinces@gmail.com
+* @created: 2021-12-17
+* @updated: 2024-04-07
+* @supported: DESKTOP
+* @file: index.css
+* @version: 0.0.2
+*/
+
+/* Body basics style configurations */
 body {
+	background-color: var(--white-700);
+	overflow: hidden;
 	padding: 0;
 	margin: 0;
-	overflow: hidden;
-	background-color: rgb(245, 245, 245);
 }
 
-/*Buttons basics design configurations*/
+/* Buttons basics design configurations */
 input[type="button"], button {
+	user-select: none;
+	cursor: pointer;
 	outline: none;
 	border: none;
-	cursor: pointer;
-	user-select: none;
 }
 
-/*Fixed element*/
+/* Fixed element */
 .fixed {
 	position: fixed;
-	top: 0;
+	z-index: 0;
+	bottom: 0;
 	right: 0;
 	left: 0;
-	bottom: 0;
-	z-index: 0;
+	top: 0;
 }
 
-/*Basic center design*/
+/* Basic center design */
 .center {
+	transform: translate(-50%, -50%);
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%, -50%);
 }
 
-/*Label basics style configurations*/
+/* Label basics style configurations */
 label {
-	user-select: none;
 	letter-spacing: 1.5px;
+	user-select: none;
 }
 
-/*Vertical flex box*/
+/* Vertical flex box */
 .vflex {
 	flex-direction: column;
 	display: flex;
 	height: 100%;
 }
 
-/*Centered graphic message*/
+/* Centered graphic message */
 .grc-msg {
-	color: grey;
-	font-size: 17px;
 	font-family: verdana;
+	color: var(--grey);
+	font-size: 17px;
 }
