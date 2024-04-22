@@ -1,5 +1,16 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Loads available users to be assigned to an equipment.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @file user_select.js
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @version 0.0.2
+*/
+
 // Attributes.
-window.usr_slt_crud = new CrudView ("div.user-select", ["Prénom(s)", "Nom", "Adresse", "ID"], "usr-slt");
+window.usr_slt_crud = new CrudView ("div.user-select", ["Surname(s)", "Name", "Address", "ID"], "usr-slt");
 
 // Draws all availables data from an array of objects.
 function draw_usr_slt_data (item, index, length) {
@@ -27,7 +38,7 @@ function draw_usr_slt_data (item, index, length) {
 		 	// Binds data.
 			window.elmt_slt = _.extend (usr_card.get_data (), {ref: "user"});
 			// Runs commun tasks.
-			commum_task ("assignment", "Affectation d'un utilisateur");
+			commum_task ("assignment", "Assigning a user");
 		// Shows the card and then increases the current delay.
 		}); window.setTimeout (() => usr_card.visibility (true), window.DELAY); window.DELAY += 150;
 		// Contains all data that will be shown.
@@ -47,7 +58,7 @@ function load_users_data () {
 		window.DELAY = 0; server_data.data.forEach ((element, index) => {
 			// Draws all logged users.
 			draw_usr_slt_data (new Object ({
-				ID: element._id, Nom: element.name, "Prénom(s)": element.surname, Adresse: element.address, disabled: ["ID"]
+				ID: element._id, Name: element.name, "Surname(s)": element.surname, Address: element.address, disabled: ["ID"]
 			}), index, server_data.length);
 		// Listens crud data.
 		}); listen_crud_data (window.usr_slt_crud);
@@ -57,11 +68,11 @@ function load_users_data () {
 // Called when this web page is fulled loaded.
 $ (() => {
 	// Fixing "click" event on crud add button.
-	$ (window.usr_slt_crud.get_add_button_id ()).click (() => generic_task ("add-user", "Inscrire un utilisateur"));
+	$ (window.usr_slt_crud.get_add_button_id ()).click (() => generic_task ("add-user", "Register a user"));
 	// Fixing "click" event on crud refresh button.
 	$ (window.usr_slt_crud.get_refresh_button_id ()).click (() => {if (network_manager ()) load_users_data ();});
 	// Overrides the current crud buttons title and loads all availables users from the data base.
-	sets_crud_btns_title ("utilisateur", window.usr_slt_crud); load_users_data (); window.draw_usr_slt_data = draw_usr_slt_data;
+	sets_crud_btns_title ("user", window.usr_slt_crud); load_users_data (); window.draw_usr_slt_data = draw_usr_slt_data;
 	// Removes this script.
 	$ ("script").remove ();
 });

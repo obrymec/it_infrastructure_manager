@@ -1,5 +1,16 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Manages users to be assigned to an equipment.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @file users.js
+* @version 0.0.2
+*/
+
 // Attributes.
-window.usrs_keys = ["Prénom(s)", "Nom", "Adresse", "Equipement", "Date d'affectation", "Date de fin", "ID"];
+window.usrs_keys = ["Surname(s)", "Name", "Address", "Equipment", "Assignment date", "End date", "ID"];
 window.usrs_tc = new TabControl ("div.users-manager", "usrs-tabctrl");
 window.usrs_sec_idx = get_cookie ("it_usrs_tab_sec");
 window.usrs_sec_idx = parseInt (!is_empty (window.usrs_sec_idx) ? window.usrs_sec_idx : 0);
@@ -25,14 +36,14 @@ function draw_user (item, toolbar, index, length) {
 			.css ("box-shadow", "0 0 8px gray");
 		}, function () {$ (this).css ("background-image", "none").css ("box-shadow", "0 0 0 transparent");});
 		// For availables users.
-		if (window.usrs_tc.get_active_section () === 0) uscard.override_options ([{text: "Affecter équipement",
-			title: "Affecter ce utilisateur à un équipement.", click: () => generic_task ("assignment", "Affectation d'un équipement",
+		if (window.usrs_tc.get_active_section () === 0) uscard.override_options ([{text: "Assign equipment",
+			title: "Assign this user to a device.", click: () => generic_task ("assignment", "Assignment of equipment",
 			// Loads all allowed equipments for this user.
 			() => {make_request ("/eq-availables", "GET", new Object ({}), server => {
 				// Contains all options that will be shown.
 				let options = []; server.data = (!Array.isArray (server.data) ? [server.data] : server.data);
 				// Generating all loaded options.
-				for (let opt of server.data) options.push ({left: opt.model, right: opt.marque, id: opt._id});
+				for (let opt of server.data) options.push ({left: opt.model, right: opt.brand, id: opt._id});
 				// Overrides dropdown options.
 				override_dropdown_options ("div.dropdown > select", options);
 				// Binds data and runs commun tasks.
@@ -40,11 +51,11 @@ function draw_user (item, toolbar, index, length) {
 			});
 		})}
 		// For affected users.
-		]); else if (window.usrs_tc.get_active_section () === 1) {uscard.set_title (item ["Prénom(s)"] + ' ' + item.Nom);
+		]); else if (window.usrs_tc.get_active_section () === 1) {uscard.set_title (item ["Surname(s)"] + ' ' + item.Name);
 			// Changes the card title and overrides these features.
-			uscard.override_options ([{text: "Retirer équipement", title: "Retirer ce utilisateur de l'équipement ciblé.", click: () => {
+			uscard.override_options ([{text: "Remove equipment", title: "Remove this user from targeted equipment.", click: () => {
 				// Opens a widget popup about user unassignment.
-				window.unassignment = {ref: "user"}; commum_task ("unassignment", "Retrait d'un équipement", uscard, true, toolbar);
+				window.unassignment = {ref: "user"}; commum_task ("unassignment", "Removing equipment", uscard, true, toolbar);
 			}
 		// Shows the card.
 		}]);} window.setTimeout (() => uscard.visibility (true), window.DELAY); window.DELAY += 150;
@@ -72,10 +83,10 @@ function load_affected_users () {
 // Called when this web page is fulled loaded.
 $ (() => {
 	// Changes the dashboard text title.
-	animate_text (__ ("div.big-title > label"), "Utilisateurs", 35); window.draw_user = draw_user;	
+	animate_text (__ ("div.big-title > label"), "Users", 35); window.draw_user = draw_user;	
 	// Fixing tabcontrol sections behavior.
 	window.usrs_tc.override_sections ([
-		{text: "Disponible(s)", title: "Consulter les utilisateurs enregistrés sur le parc.", click: () => load_availables_users ()},
-		{text: "Affecté(s)", title: "Consulter les utilisateurs ayant été affectés à un équipement.", click: () => load_affected_users ()}
+		{text: "Available", title: "View registered users on the park.", click: () => load_availables_users ()},
+		{text: "Assigned", title: "Consult users who have been assigned to a device.", click: () => load_affected_users ()}
 	], window.usrs_sec_idx); $ ("script").remove ();
 });

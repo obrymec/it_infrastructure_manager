@@ -1,3 +1,14 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Manages historical data section.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @file history.js
+* @version 0.0.2
+*/
+
 // Draw a data card for any case.
 function draw_history_data (parent_id, data, id) {
 	// Creating a new data card.
@@ -26,9 +37,9 @@ function load_history_data () {
 		$ ("div.hproviders > div.history-header > div.item-count > label").text (1);
 		// For the provider history data.
 		window.DELAY = 0.0; draw_history_data ("div.hproviders > div.history-content", new Object ({
-			Nom: server.data.provider.name.toUpperCase (), "Prénom(s)": server.data.provider.surname,
-			Adresse: server.data.provider.address,
-			"Numéro de téléphone": get_better_phone_display (server.data.provider.phone_number, "+229")
+			Name: server.data.provider.name.toUpperCase (), "Surname(s)": server.data.provider.surname,
+			Address: server.data.provider.address,
+			"Phone number": get_better_phone_display (server.data.provider.phone_number, "+229")
 		}), id); $ ("div.hproviders > div.history-content > div.hmsg").remove ();
 		// For user(s) history data.
 		server.data.history.old_users.forEach (old_user => {
@@ -38,10 +49,10 @@ function load_history_data () {
 			$ ("div.husers > div.history-content > div.hmsg").remove ();
 			// Draws users history data.
 			let cdate = old_user.cancel_date.split ('-'); draw_history_data ("div.husers > div.history-content", new Object ({
-				Nom: old_user.name.toUpperCase (), "Prénom(s)": old_user.surname, Adresse: old_user.address,
-				"Date d'affectation": parse_date (parseInt (adate [2]), parseInt (adate [1]), parseInt (adate [0])),
-				"Date de fin": parse_date (parseInt (edate [2]), parseInt (edate [1]), parseInt (edate [0])),
-				"Date de retrait": parse_date (parseInt (cdate [2]), parseInt (cdate [1]), parseInt (cdate [0])), 
+				Name: old_user.name.toUpperCase (), "Surname(s)": old_user.surname, Address: old_user.address,
+				"Assignment date": parse_date (parseInt (adate [2]), parseInt (adate [1]), parseInt (adate [0])),
+				"End date": parse_date (parseInt (edate [2]), parseInt (edate [1]), parseInt (edate [0])),
+				"Date of withdrawal": parse_date (parseInt (cdate [2]), parseInt (cdate [1]), parseInt (cdate [0])), 
 			}), id);
 		// For problem(s) and solution(s) history data.
 		}); server.data.history.old_problems.forEach (old_problem => {
@@ -66,12 +77,12 @@ function load_history_data () {
 			let adate = old_service.assign_date.split ('-'); let edate = old_service.expired_date.split ('-');
 			// Gets the cancel date and draws services history data.
 			let cdate = old_service.cancel_date.split ('-'); draw_history_data ("div.hservices > div.history-content", new Object ({
-				"Adresse du prestataire": old_service.address,
-				"Date d'affectation": parse_date (parseInt (adate [2]), parseInt (adate [1]), parseInt (adate [0])),
-				"Date de fin": parse_date (parseInt (edate [2]), parseInt (edate [1]), parseInt (edate [0])),
-				Prestataire: old_service.service_provider,
-				"Date de retrait": parse_date (parseInt (cdate [2]), parseInt (cdate [1]), parseInt (cdate [0])),
-				"Référence": ((typeof old_service.reference === "string") ? old_service.reference : null), Type: old_service.type				
+				"Provider address": old_service.address,
+				"Assignment date": parse_date (parseInt (adate [2]), parseInt (adate [1]), parseInt (adate [0])),
+				"End date": parse_date (parseInt (edate [2]), parseInt (edate [1]), parseInt (edate [0])),
+				Provider: old_service.service_provider,
+				"Date of withdrawal": parse_date (parseInt (cdate [2]), parseInt (cdate [1]), parseInt (cdate [0])),
+				Reference: ((typeof old_service.reference === "string") ? old_service.reference : null), Type: old_service.type				
 			}), id);
 		// For affected services data.
 		}); server.data.affected_services.forEach (affected_service => {
@@ -81,11 +92,11 @@ function load_history_data () {
 			let adate = affected_service.assign_date.split ('-'); let edate = affected_service.expired_date.split ('-');
 			// Draws affected services into history data.
 			draw_history_data ("div.hservices > div.history-content", new Object ({
-				"Adresse du prestataire": affected_service.address,
-				"Date d'affectation": parse_date (parseInt (adate [2]), parseInt (adate [1]), parseInt (adate [0])),
-				"Date de fin": parse_date (parseInt (edate [2]), parseInt (edate [1]), parseInt (edate [0])),
-				Prestataire: affected_service.service_provider,
-				"Référence": ((typeof affected_service.reference === "string") ? affected_service.reference : null),
+				"Provider address": affected_service.address,
+				"Assignment date": parse_date (parseInt (adate [2]), parseInt (adate [1]), parseInt (adate [0])),
+				"End date": parse_date (parseInt (edate [2]), parseInt (edate [1]), parseInt (edate [0])),
+				Provider: affected_service.service_provider,
+				Reference: ((typeof affected_service.reference === "string") ? affected_service.reference : null),
 				Type: affected_service.type
 			}), id);
 		});

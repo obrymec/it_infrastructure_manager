@@ -1,8 +1,19 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @author Obrymec - obrymecsprinces@gmail.com
+* @fileoverview Crud view component.
+* @created 2021-12-17
+* @updated 2024-04-21
+* @file crud_view.js
+* @supported DESKTOP
+* @version 0.0.2
+*/
+
 // Crud view class definition.
 function CrudView (parent, keys = [], id = null) {
 	// Attributes.
 	let scroll = 0, scroll_id = null, ad_id = null, up_id = null, dw_id = null, fcard = null, lcard = null;
-	let cu_data = [], mui_id = null, mdi = null, ip_id = null, itc_id = null, cls_id = null, cu_id = null;
+	let cu_data = [], mui_id = null, mdi_id = null, ip_id = null, itc_id = null, cls_id = null, cu_id = null;
 	let cnt_id = null, msg_id = null, is_show = false, sh_id = null, rf_id = null, hdr_id = null;
 
 	// Builds the toolbar on the app view.
@@ -25,8 +36,8 @@ function CrudView (parent, keys = [], id = null) {
 					<svg fill = 'none' height = '20px' stroke = 'grey' stroke-width = '2' viewBox = '0 0 24 24' width = '20px'>\
 						<circle cx = '10.5' cy = '10.5' r = '7.5'/><line x1 = '21' x2 = '15.8' y1 = '21' y2 = '15.8'/>\
 					</svg></div><div class = 'search-field' id = 'shr-fd-" + id + "'>\
-						<input type = 'text' placeholder = 'Rechercher' title = \"Rechercher un élément donné.\"/>\
-						<div class = 'field-clear' id = 'shr-cls-" + id + "' title = \"Nétoyer complètement la valeur saisie.\">\
+						<input type = 'text' placeholder = 'Search' title = \"Search for a given item.\"/>\
+						<div class = 'field-clear' id = 'shr-cls-" + id + "' title = \"Completely clean the entered value.\">\
 							<svg height = '20px' style = 'enable-background:new 0 0 512 512;' viewBox = '0 0 512 512'\
 								width = '20px' fill = 'silver'><g><path d = 'M256,33C132.3,33,32,133.3,32,257c0,123.7,\
 								100.3,224,224,224c123.7,0,224-100.3,224-224C480,133.3,379.7,33,256,33z M364.3,332.5c1.5,\
@@ -59,7 +70,7 @@ function CrudView (parent, keys = [], id = null) {
 				<div class = 'crud-toolbar' id = 'cu-tb-" + id + "'>\
 					<div class = 'main-options'>\
 						<div class = 'ar' id = 'tb-ar-" + id + "'>\
-							<div class = 'ari' id = 'tb-ari-" + id + "' title = \"Ajouter un élément.\">\
+							<div class = 'ari' id = 'tb-ari-" + id + "' title = \"Add an item.\">\
 								<svg viewBox = '0 0 32 32' width = '40px' height = '40px'>\
 									<defs><style>line.cls-2{fill: none; stroke: grey; stroke-width: 2px;}</style></defs>\
 									<g><line class = 'cls-2' x1 = '16' x2 = '16' y1 = '7' y2 = '25'/>\
@@ -68,14 +79,14 @@ function CrudView (parent, keys = [], id = null) {
 							</div>\
 						</div>\
 						<div class = 'sh' id = 'tb-sh-" + id + "'>\
-							<div class = 'shi' id = 'tb-shi-" + id + "' title = \"Rechercher un élément.\">\
+							<div class = 'shi' id = 'tb-shi-" + id + "' title = \"Search for an item.\">\
 								<svg fill = 'none' height = '25px' width = '25px' stroke = 'grey' stroke-width = '2' viewBox = '0 0 24 24'>\
 									<circle cx = '10.5' cy = '10.5' r = '7.5'/><line x1 = '21' x2 = '15.8' y1 = '21' y2 = '15.8'/>\
 								</svg>\
 							</div>\
 						</div>\
 						<div class = 'rf' id = 'tb-rf-" + id + "'>\
-							<div class = 'rfi' id = 'tb-rfi-" + id + "' title = \"Rafraîchir la section.\">\
+							<div class = 'rfi' id = 'tb-rfi-" + id + "' title = \"Refresh section.\">\
 								<svg viewBox = '0 0 512 512' width = '20px' height = '20px' fill = 'grey'>\
 									<path d = 'M496 48V192c0 17.69-14.31 32-32 32H320c-17.69 0-32-14.31-32-32s14.31-32 \
 									32-32h63.39c-29.97-39.7-77.25-63.78-127.6-63.78C167.7 96.22 96 167.9 96 256s71.69 \
@@ -88,14 +99,14 @@ function CrudView (parent, keys = [], id = null) {
 						</div>\
 					</div>\
 					<div class = 'mu' id = 'tb-mu-" + id + "'>\
-						<div class = 'mui' id = 'tb-mui-" + id + "' title = 'Défilement rapide vers le haut.'>\
+						<div class = 'mui' id = 'tb-mui-" + id + "' title = 'Refresh section.'>\
 							<a><svg height = '28px' viewBox = '0 0 512 512' width = '28px' fill = 'grey'>\
 								<polygon points = '396.6,352 416,331.3 256,160 96,331.3 115.3,352 256,201.5'/>\
 							</svg></a>\
 						</div>\
 					</div>\
 					<div class = 'md' id = 'tb-md-" + id + "'>\
-						<div class = 'mdi' id = 'tb-mdi-" + id + "' title = 'Défilement rapide vers le bas.'>\
+						<div class = 'mdi' id = 'tb-mdi-" + id + "' title = 'Quick scroll down.'>\
 							<a><svg height = '28px' viewBox = '0 0 512 512' width = '28px' fill = 'grey'>\
 								<polygon points = '396.6,352 416,331.3 256,160 96,331.3 115.3,352 256,201.5'/>\
 							</svg></a>\
@@ -193,7 +204,7 @@ function CrudView (parent, keys = [], id = null) {
 			} else {
 				// Shows graphics for no result found.
 				$ ($ (msg_id).parent ().children () [0]).css ("visibility", "visible");
-				$ (msg_id).text ("Aucun résultat"); $ (itc_id).text (filter.length);
+				$ (msg_id).text ("No result"); $ (itc_id).text (filter.length);
 			}
 		// Shows all items data card and updates the total result found.
 		} else {
@@ -248,7 +259,7 @@ function CrudView (parent, keys = [], id = null) {
 			// Hides the search input field.
 			if (is_show) {$ (hdr_id).css ("margin-top", "-47px"); __ (ip_id).blur (); is_show = false;}
 			// Hides search button option and shows "No data" message.
-			$ (sh_id).css ("display", "none").css ("pointer-events", "none"); $ (msg_id).text ("Aucune donnée");
+			$ (sh_id).css ("display", "none").css ("pointer-events", "none"); $ (msg_id).text ("No data");
 			// Displays a message to warns user about empty data case and clears input field content value.
 			$ ($ (msg_id).parent ().children () [0]).css ("visibility", "visible"); $ (ip_id).val (''); 
 		}

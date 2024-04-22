@@ -1,3 +1,14 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @author Obrymec - obrymecsprinces@gmail.com
+* @fileoverview Message box component.
+* @file message_box.js
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @version 0.0.2
+*/
+
 // Message box class definition.
 function MessageBox (parent, data = new Object ({}), auto_hide = false, id = null) {
 	// Attributes.

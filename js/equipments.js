@@ -1,7 +1,18 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Equipments displaying section.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @created 2021-12-17
+* @updated 2024-04-21
+* @file equipments.js
+* @supported DESKTOP
+* @version 0.0.2
+*/
+
 // Attributes.
-window.eq_keys = ["Caractères technique", "Date d'achat", "Etat d'achat", "Etat d'utilisation", "Marque", "Prix", "Model", "Référence",
-	"Fournisseur", "Adresse du fournisseur", "Téléphone du fournisseur", "Utilisateur actuel", "Adresse de l'utilisateur",
-	"Date du problème", "Description du problème", "ID"
+window.eq_keys = ["Technical characters", "Purchase date", "Purchase status", "Usage status", "Brand", "Price", "Model", "Reference",
+	"Provider", "Provider address", "Provider phone", "Current user", "User address",
+	"Problem date", "Problem description", "ID"
 ];
 window.eq_tc = new TabControl ("div.equipments-manager", "eq-tabctrl");
 window.eq_sec_idx = get_cookie ("it_eq_tab_sec");
@@ -12,7 +23,7 @@ window.eq_wdm = null;
 function sup_popup (path, width, height, max_width, max_height, title, props_to_destroyed, widget_id) {
 	// Draws a widget to display any equipment service or user association.
 	if (network_manager ()) {window.eq_wdm = draw_widget (path, new Object ({width: width, height: height, max_width: max_width,
-		max_height: max_height, zindex: 0, title: ("Affectation " + title), destroy: () => {
+		max_height: max_height, zindex: 0, title: ("Assignment " + title), destroy: () => {
 			// Clears all background tasks.
 			destroy_props (props_to_destroyed); window.clearTimeout (window.eq_wdm.get_load_pid ()); window.DISCONNECT = true;
 		}
@@ -36,27 +47,27 @@ function draw_equipment (item, toolbar, index, length) {
 		eq_card.override_data (item); let widget_id = eq_card.get_id ().replace ("div#", '');
 		// For service equipments.
 		if (window.eq_tc.get_active_section () === 0) eq_card.override_options ([
-			{text: "Historique", title: "Consulter l'historique de ce équipement.", click: () => {
+			{text: "Historical", title: "Consult the history of this equipment.", click: () => {
 				// Shows history window for loading his data.
 				window.selected_equipment = eq_card; show_history (eq_card);
-			}}, {text: "Associer service", title: "Associer un service à ce équipement.", click: () => {
+			}}, {text: "Associate service", title: "Associate a service to this equipment.", click: () => {
 				// Draws a widget to display any equipment services association.
 				sup_popup ("../views/service_select.html", 820, 480, 1024, 600, "de service", ["svc_slt_crud", "selected_equipment"],
 				widget_id); window.selected_equipment = eq_card;
-			}}, {text: "Associer utilisateur", title: "Associer un utilisateur à ce équipement.", click: () => {
+			}}, {text: "Associate user", title: "Associate a user to this equipment.", click: () => {
 				// Draws a widget to display any equipment users association.
-				sup_popup ("../views/user_select.html", 680, 480, 1024, 600, "d'un utilisateur",
+				sup_popup ("../views/user_select.html", 680, 480, 1024, 600, "of a user",
 				["usr_slt_crud", "selected_equipment"], widget_id); window.selected_equipment = eq_card;
 			}}
 		// For maintenance equipments.
 		]); else if (window.eq_tc.get_active_section () === 1) eq_card.override_options ([
-			{text: "Historique", title: "Consulter l'historique de ce équipement.", click: () => {
+			{text: "Historical", title: "Consult the history of this equipment.", click: () => {
 				// Shows history window for loading his data.
 				window.selected_equipment = eq_card; show_history (eq_card);
-			}}, {text: "Réparer", title: "Résoudre le problème lié à ce équipement.", click: () => {
+			}}, {text: "Fix", title: "Fix the problem to this equipment.", click: () => {
 				// Runs task for solve operation.
-				commum_task ("add-solve", "Réparation d'un équipement", eq_card, true, toolbar);
-			}}, {text: "Sortir", title: "Sortir ce équipement du parc.", click: () => {
+				commum_task ("add-solve", "Repair of equipment", eq_card, true, toolbar);
+			}}, {text: "Get out", title: "Take this gear out of the park.", click: () => {
 				// Runs process for get out of the current equipment.
 				let cdata = eq_card.get_data (); let data = new Object ({id: eq_card.get_id ().replace ("div#cd-", ''),
 					marque: cdata.Marque, model: cdata.Model
@@ -65,7 +76,7 @@ function draw_equipment (item, toolbar, index, length) {
 					// No errors found.
 					if (!server.errors) {
 						// Displays a message.
-						let msg = new MessageBox ("div.other-views", new Object ({title: "Méssage serveur", zindex: 1, color: "green",
+						let msg = new MessageBox ("div.other-views", new Object ({title: "Server message", zindex: 1, color: "green",
 							text: server.message, options: [{text: "OK", title: "Ok.", click: () => msg.visibility (false, () => {
 								// Destroys the associated data card.
 								destroy_data_card (eq_card, toolbar);
@@ -77,19 +88,19 @@ function draw_equipment (item, toolbar, index, length) {
 			}}
 		// For using equipments.
 		]); else if (window.eq_tc.get_active_section () === 2) eq_card.override_options ([
-			{text: "Historique", title: "Consulter l'historique de ce équipement.", click: () => {
+			{text: "Historical", title: "Consult the history of this equipment.", click: () => {
 				// Shows history window for loading his data.
 				window.selected_equipment = eq_card; show_history (eq_card);
-			}}, {text: "Problème", title: "Signaler un problème lié à ce équipement.", click: () => {
+			}}, {text: "Problem", title: "Report a problem with this equipment.", click: () => {
 				// Runs task for problem declaration.
-				commum_task ("add-bug", "Signalement d'un problème", eq_card, true, toolbar);
-			}}, {text: "Associer service", title: "Associer un service à l'équipement.", click: () => {
+				commum_task ("add-bug", "Reporting a problem", eq_card, true, toolbar);
+			}}, {text: "Associate service", title: "Associate a service to this equipment.", click: () => {
 				// Draws a widget to display any equipment services association.
-				sup_popup ("../views/service_select.html", 820, 480, 1024, 600, "de service", ["svc_slt_crud", "selected_equipment"],
+				sup_popup ("../views/service_select.html", 820, 480, 1024, 600, "of service", ["svc_slt_crud", "selected_equipment"],
 				widget_id); window.selected_equipment = eq_card;
-			}}, {text: "Retirer l'utilisateur", title: "Retirer l'utilisateur de ce équipement.", click: () => {
+			}}, {text: "Remove user", title: "Remove user from this equipment.", click: () => {
 				// Opens a widget popup about user unassignment.
-				window.unassignment = {ref: "user"}; commum_task ("unassignment", "Retrait d'utilisateur", eq_card, true, toolbar);
+				window.unassignment = {ref: "user"}; commum_task ("unassignment", "User removing", eq_card, true, toolbar);
 			}}
 		// Contains all data that will be shown.
 		]); window.setTimeout (() => eq_card.visibility (true), window.DELAY); window.DELAY += 150;
@@ -125,11 +136,11 @@ function load_service_equipments () {
 // Called when this web page is fulled loaded.
 $ (() => {
 	// Changes the dashboard text title.
-	animate_text (__ ("div.big-title > label"), "Equipements", 35); window.draw_equipment = draw_equipment;
+	animate_text (__ ("div.big-title > label"), "Equipments", 35); window.draw_equipment = draw_equipment;
 	// Fixing tabcontrol sections behavior.
 	window.eq_tc.override_sections ([
-		{text: "Disponible(s)", title: "Consulter les équipement(s) disponible(s) sur le parc.", click: () => load_availables_equipments ()},
-		{text: "En maintenance", title: "Consulter le(s) équipement(s) en cours de maintenance.", click: () => load_bug_equipments ()},
-		{text: "En service", title: "Consulter le(s) équipement(s) affecté(s) à un utilisateur.", click: () => load_service_equipments ()}
+		{text: "Available", title: "View available equipment(s) in the park.", click: () => load_availables_equipments ()},
+		{text: "Under maintenance", title: "View equipment(s) currently undergoing maintenance.", click: () => load_bug_equipments ()},
+		{text: "In service", title: "View equipment(s) assigned to a user.", click: () => load_service_equipments ()}
 	], window.eq_sec_idx); $ ("script").remove ();
 });

@@ -1,5 +1,16 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Loads registered providers from database.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @file providers.js
+* @version 0.0.2
+*/
+
 // Attributes.
-window.prv_keys = ["Nom", "Prénom(s)", "Numéro de téléphone", "Adresse", "ID", "Nombre de problèmes"];
+window.prv_keys = ["Name", "Surname(s)", "Phone number", "Address", "ID", "Number of problems"];
 window.prv_tc = new TabControl ("div.providers-manager", "prv-tabctrl");
 window.prv_sec_idx = get_cookie ("it_prv_tab_sec");
 window.prv_sec_idx = (!is_empty (window.prv_sec_idx) ? window.prv_sec_idx : 0);
@@ -42,7 +53,7 @@ function draw_provider (item, toolbar, index, length) {
        		-33 -60 -104 -122 -162 -142 -60 -21 -160 -16 -218 10 -249 111 -231 472 28 557 60 20 161 12 217 -16z'/></g>\
        	</svg>"); pcard.set_radius (0, 5, 5, 0); pcard.override_data (item);
 		// Overrides arrows action.
-		toolbar.override_up_down_action (length, index, pcard); pcard.set_title (item ["Prénom(s)"] + ' ' + item.Nom);
+		toolbar.override_up_down_action (length, index, pcard); pcard.set_title (item ["Surname(s)"] + ' ' + item.Name);
 		// Changes the default size of the created card.
 		$ (pcard.get_id ()).css ("border", "1px solid silver").css ("box-shadow", "none").hover (function () {
 			$ (this).css ("background-image", "linear-gradient(rgb(203, 226, 243), #fff, rgb(203, 226, 243)")
@@ -71,14 +82,13 @@ function load_bad_providers () {
 	destroy_props (["god_prd_crud"]); set_cookie ("it_prv_tab_sec", 1, 365); window.prv_sec_idx = 1;
 }
 
-
 // Called when this web page is fulled loaded.
 $ (() => {
 	// Changes the dashboard text title.
-	animate_text (__ ("div.big-title > label"), "Fournisseurs", 35);
+	animate_text (__ ("div.big-title > label"), "Providers", 35);
 	// Fixing tabcontrol sections behavior.
 	window.prv_tc.override_sections ([
-		{text: "Excélent", title: "Consulter les meilleurs fournisseurs.", click: () => load_good_providers ()},
-		{text: "Mauvais", title: "Consulter les mauvais fournisseurs.", click: () => load_bad_providers ()}
+		{text: "Excellent", title: "Consult the best suppliers.", click: () => load_good_providers ()},
+		{text: "Bad", title: "Consulting the wrong suppliers.", click: () => load_bad_providers ()}
 	], parseInt (window.prv_sec_idx)); $ ("script").remove ();
 });

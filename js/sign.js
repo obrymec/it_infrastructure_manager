@@ -1,3 +1,14 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Manages sign in/up system for any guest.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @version 0.0.2
+* @file sign.js
+*/
+
 // Locals attributes.
 window.sign_confirm_pass = __ ("input#confirm-password");
 window.sign_container = __ ("div.sign-container");
@@ -43,7 +54,7 @@ function load_sign (path) {
 		// Updates the sign in global variable.
 		window.SIGN_IN = (window.SIGN_IN ? false : true);
 		// Loads the target sign web page.
-		load_view (path, "div.views", "Chargement...", "Veillez patienter pendant qu'on charge les données de l'application.");
+		load_view (path, "div.views", "Loading...", "Please wait while the application data is loaded.");
 	});
 }
 
@@ -77,7 +88,7 @@ function animate_elements (finished, title) {
 // Animates the current page.
 function sign_animation (direction = 1, finished = null) {
 	// Disabled a certains features.
-	$ ("input").css ("pointer-events", "none"); title = (window.SIGN_IN ? "Identification" : "Inscription");
+	$ ("input").css ("pointer-events", "none"); title = (window.SIGN_IN ? "Sign in" : "Sign up");
 	// Checks animation direction.
 	if (direction >= 1) apply_css_animation (new Object ({name: "sign_in_up", duration: 300, ref: sign_container, finish: () => {
 		// Enables blur effect.
@@ -117,7 +128,7 @@ function sign_animation (direction = 1, finished = null) {
 // Manages message box.
 function message_box (message) {
 	// Create a new instance of the message.
-	let message_box = new MessageBox ("div.other-views", new Object ({text: message, title: "Méssage serveur", color: "red",
+	let message_box = new MessageBox ("div.other-views", new Object ({text: message, title: "Server message", color: "red",
 	zindex: 1, options: [{text: "OK", title: "Ok.", click: () => message_box.visibility (false, () => window.lock = false)}]
 	// Shows the message box.
 	})); message_box.visibility (true);
@@ -153,9 +164,9 @@ function sign_up () {
 		// Checking the given data.
 		]; make_request ("/sign-up", "POST", new Object ({data: form_data}), server => {
 			// For empty fields.
-			if (Array.isArray (server.errors) && server.errors [0].message === "Ce champ n'a pas été renseigné.") {
+			if (Array.isArray (server.errors) && server.errors [0].message === "This field has not been filled in.") {
 				// Changes the server message.
-				server.errors [0].message = "Des champs n'ont pas été renseignés. Veuillez les remplir afin de poursuivre l'opération.";
+				server.errors [0].message = "Some fields have not been filled in. Please complete them in order to continue the operation.";
 			// The server data contains some errors.
 			} if (Array.isArray (server.errors)) message_box (server.errors [0].message); else load_sign ("../views/sign.html");
 		// Disables any potentials actions.
@@ -166,7 +177,7 @@ function sign_up () {
 // Called when this web page is fulled loaded.
 $ (() => {
 	// Draws the loader for sign web page image loading.
-	draw_loader (new Object ({title: window.MESSAGES [2], parent: "div.views", label: "Chargement...", id: "sign"}));
+	draw_loader (new Object ({title: window.MESSAGES [2], parent: "div.views", label: "Loading...", id: "sign"}));
 	// Waiting for the background image loaded.
 	$ ("div.img-zone > img").attr ("src", (window.SIGN_IN ? "../images/sign_in.jpg" : "../images/sign_up.jpeg")).on ("load", () => {
 		// Waiting for the given delay.
@@ -196,8 +207,8 @@ $ (() => {
 					// Fixing "keydown" event on email field.
 					sign_email.addEventListener ("keydown", event => {if (event.key == "Enter") sign_in ();});
 					// Fixing options rules and data value.
-					options [0].title = "Vous n'avez pas encore un compte."; options [0].value = "S'incrire";
-					options [1].title = "Se connecter maintenant ?"; options [1].value = "Connexion";
+					options [0].title = "You do not have an account yet."; options [0].value = "Sign up";
+					options [1].title = "Log in now ?"; options [1].value = "Sign in";
 					// Fixing right button action.
 					options [1].addEventListener ("click", () => sign_in ());
 				// Otherwise.
@@ -214,8 +225,8 @@ $ (() => {
 					// Fixing "keydown" event on email field.
 					sign_email.addEventListener ("keydown", event => {if (event.key == "Enter") sign_up ();});
 					// Fixing options rules and data value.
-					options [1].title = "Lancer la création de votre compte ?"; options [1].value = "Inscription";
-					options [0].title = "Se connecter maintenant ?"; options [0].value = "Se connecter";
+					options [1].title = "Start creating your account ?"; options [1].value = "Sign up";
+					options [0].title = "Log in now ?"; options [0].value = "Sign in";
 					// Fixing right button action.
 					options [1].addEventListener ("click", () => sign_up ());
 				}

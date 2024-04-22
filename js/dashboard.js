@@ -1,3 +1,14 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview The main section of the application.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @file dashboard.js
+* @version 0.0.2
+*/
+
 // Attributes.
 window.active_option = get_cookie ("it_ac_dash_opt");
 window.active_option = ((typeof window.active_option === "string") ? window.active_option : "div.equipments");
@@ -68,9 +79,9 @@ function dashboard_visibility (visible, finished = null) {
 // Redefined crud buttons title text.
 function sets_crud_btns_title (title, toolbar) {
 	// Changes add button title.
-	$ ($ (toolbar.get_add_button_id ()).children () [0]).attr ("title", ("Ajouter un " + title));
+	$ ($ (toolbar.get_add_button_id ()).children () [0]).attr ("title", ("Add " + title));
 	// Changes search button title.
-	$ ($ (toolbar.get_search_button_id ()).children () [0]).attr ("title", ("Rechercher un " + title));
+	$ ($ (toolbar.get_search_button_id ()).children () [0]).attr ("title", ("Search " + title));
 }
 
 // Clears all unusefull process from a widget popup.
@@ -94,7 +105,7 @@ function reset_inputs_value (data) {
 	// Checks data type and content.
 	data.forEach (item => $ (item.id).val (item.hasOwnProperty ("initial") ? String (item.initial) : ''));
 	// Resets id viewer.
-	$ ("div.item-id").css ("display", (($ ("div.dropdown > select").val () !== "Aucun") ? "inline-block" : "none"));
+	$ ("div.item-id").css ("display", (($ ("div.dropdown > select").val () !== "none") ? "inline-block" : "none"));
 }
 
 // Checks inputs values to decide whether "reset" button will be active or not.
@@ -110,7 +121,7 @@ function inputs_state (data, btn_id) {
 }
 
 // Apply common formulary instructions.
-function initialize_form (data, widget, opt_id = null, ready = null, height = "auto") {
+function initialize_form (data, widget, opt_id = null, ready = null) {
 	// Corrects the given option id.
 	opt_id = ((typeof opt_id === "string") ? opt_id : widget.get_options_ids () [1]);
 	// Fixing clear icon "click" event.
@@ -138,7 +149,7 @@ function draw_basic_widget (path, height, title, widget_id, ready = null, reset 
 		zindex: 0, title: title, destroy: () => clear_widget_process (wdm, props_to_destroyed)
 	// Creates all usefull options for any operation.
 	}), () => initialize_form (reset, wdm, wdm.get_options_ids () [1], ready, height), widget_id); wdm.override_options ([
-		{text: "Rafraîchir", title: "Rafraîchir la section.", click: (option_id) => {
+		{text: "Refresh", title: "Refresh section.", click: (option_id) => {
 			// Can it refreshes the active section ?
 			if (network_manager () && window.DISCONNECT) {
 				// Hides this option.
@@ -153,13 +164,13 @@ function draw_basic_widget (path, height, title, widget_id, ready = null, reset 
 					$ (option_id).css ("transform", "scale(1)"); initialize_form (reset, wdm, wdm.get_options_ids () [1], ready, height);
 				}));
 			}
-		}}, {text: "Réinitialiser", disabled: true, title: "Ramener les valeurs par défaut.", click: (option_id) => {
+		}}, {text: "Reset", disabled: true, title: "Restore default values.", click: (option_id) => {
 			// Empty all clearable fields and disables the passed option.
 			reset_inputs_value (reset); __ (option_id).classList.add ("disabled");
-		}}, {text: "Appliquer", title: "Valider l'opération à éffectuée.", click: (option_id) => {
+		}}, {text: "Apply", title: "Validate the operation to be performed.", click: () => {
 			// Calls a slot to make an ajax request to server.
 			if (typeof query === "function") query (wdm);
-		}}, {text: "Annuler", title: "Abandonner l'opération.", click: (option_id) => wdm.visibility (false)}
+		}}, {text: "Cancel", title: "Abort the operation.", click: () => wdm.visibility (false)}
 	// Returns the final generated widget popup.
 	]); return wdm;
 }
@@ -167,7 +178,7 @@ function draw_basic_widget (path, height, title, widget_id, ready = null, reset 
 // Overrides a dropdown option.
 function override_dropdown_options (drop_id, data, allow_none = true) {
 	// Removes all old options and appends "none" option.
-	$ (drop_id).html (''); if (allow_none) $ (drop_id).append ("<option id = 'Aucun' value = 'Aucun' name = ''>Aucun</option>");
+	$ (drop_id).html (''); if (allow_none) $ (drop_id).append ("<option id = 'none' value = 'none' name = ''>None</option>");
 	// Generating all given dropdown options.
 	data.forEach (item => {
 		// Contains an option state value.
@@ -203,9 +214,9 @@ function listen_crud_data (toolbar) {
 // Manages id viewer input text field.
 function updates_id_viewer (drop_id) {
 	// Gets the dropdown value and checks his value.
-	let val = $ (drop_id).val (); $ ("div.item-id").css ("display", ((val !== "Aucun") ? "inline-block" : "none"));
+	let val = $ (drop_id).val (); $ ("div.item-id").css ("display", ((val !== "none") ? "inline-block" : "none"));
 	// Updates id viewer input text field value.
-	$ ("div.element-id > input[type='text']").val ((val !== "Aucun") ? ("ID: " + get_drop_opt (drop_id)) : "Undefined");
+	$ ("div.element-id > input[type='text']").val ((val !== "none") ? ("ID: " + get_drop_opt (drop_id)) : "Undefined");
 }
 
 // Manages commum task.
@@ -220,8 +231,8 @@ function commum_task (key, title, card_ref = null, source = true, toolbar = null
 function get_require_equipment_data (card_ref = null, source = true) {
 	// Gets associated data of the current selected equipment reference.
 	card_ref = ((card_ref instanceof DataCard) ? card_ref : window.selected_equipment); let vals = card_ref.get_data ();
-	// Corrects the model and marque of the equipment.
-	let eq_tag = [vals.Model.replace ('-', ''), vals.Marque.replace ('-', ''), (source ? card_ref.get_id () : vals.eq_id)];
+	// Corrects the model and brand of the equipment.
+	let eq_tag = [vals.Model.replace ('-', ''), vals.Brand.replace ('-', ''), (source ? card_ref.get_id () : vals.eq_id)];
 	// Returns the final result.
 	return new Object ({left: eq_tag [0], right: eq_tag [1], id: eq_tag [2]});
 }
@@ -231,13 +242,13 @@ function add_equipment () {
 	// Checks network state.
 	if (network_manager ()) {
 		// Displays a widget to load all required fields for an equipment adding. 
-		let today = get_date (); draw_basic_widget ("../views/add_equipment.html", 600, "Enregistrement d'un équipement", "eq-add", () => {
+		let today = get_date (); draw_basic_widget ("../views/add_equipment.html", 600, "Registering equipment", "eq-add", () => {
 			// Initializes dates value.
 			$ ("div.eq-buy-date > input").val (today);
 		}, [{id: "div.eq-ref > input"}, {id: "div.eq-mark > input"}, {id: "div.eq-model > input"}, {id: "div.pro-first-name > input"},
-			{id: "div.eq-state > select", initial: "Non affecté", type: "dropdown"}, {id: "div.technic-report > textarea"},
+			{id: "div.eq-state > select", initial: "Unaffected", type: "dropdown"}, {id: "div.technic-report > textarea"},
 			{id: "div.eq-buy-date > input", initial: today}, {id: "div.pro-address > input"}, {id: "div.pro-phone > input"},
-			{id: "div.eq-price > input", initial: 0}, {id: "div.eq-buy-state > select", initial: "Neuf", type: "dropdown"},
+			{id: "div.eq-price > input", initial: 0}, {id: "div.eq-buy-state > select", initial: "New", type: "dropdown"},
 			{id: "div.pro-last-name > input"}
 		], widget => {
 			// Contains all required fields id for user adding operation.
@@ -249,12 +260,12 @@ function add_equipment () {
 				// Checks variables existance.
 				if (window.hasOwnProperty ("eq_sec_idx") && window.active_option === "div.equipments" && window.eq_sec_idx === 0) {
 					// Contains the filtered buy date.
-					server.data ["Téléphone du fournisseur"] = get_better_phone_display (server.data ["Téléphone du fournisseur"], "+229");
-					let date = server.data ["Date d'achat"].split ('-');
+					server.data ["Provider phone"] = get_better_phone_display (server.data ["Provider phone"], "+229");
+					let date = server.data ["Purchase date"].split ('-');
 					date = [parseInt (date [2]), parseInt (date [1]), parseInt (date [0])];
 					// Contains the crud data total elements count.
-					server.data.Prix = (parse_float (server.data.Prix, 2) + " XOF"); let count = window.srv_eq_crud.get_data ().length;
-					server.data ["Date d'achat"] = parse_date (date [0], date [1], date [2]);
+					server.data.Price = (parse_float (server.data.Price, 2) + " XOF"); let count = window.srv_eq_crud.get_data ().length;
+					server.data ["Purchase date"] = parse_date (date [0], date [1], date [2]);
 					// Adds the associated data card to this section.
 					window.draw_equipment (server.data, window.srv_eq_crud, count, (count + 1)); listen_crud_data (window.srv_eq_crud);
 				}
@@ -270,7 +281,7 @@ function run_server_data (data, widget, slot = null) {
 	// Closes the widget that contains the operation.
 	else widget.visibility (false, () => {
 		// Displays the server message for this operation.
-		let server_message = new MessageBox ("div.other-views", new Object ({title: "Méssage serveur", zindex: 1, text: data.message,
+		let server_message = new MessageBox ("div.other-views", new Object ({title: "Server message", zindex: 1, text: data.message,
 			color: "green", options: [{text: "OK", title: "Ok.", click: () => {
 				// Destroys the message box and calls slot whether it exists.
 				server_message.visibility (false); if (typeof slot === "function") slot (data);
@@ -346,18 +357,18 @@ function destroy_field_error (field_id) {
 function show_history (card) {
 	// Checks the browser network.
 	if (card instanceof DataCard && network_manager ()) {
-		// Gets equipment marque, model and the history title. 
-		let title = (card.get_data ().Model.replace ('-', '') + " - " + card.get_data ().Marque.replace ('-', ''));
+		// Gets equipment brand, model and the history title. 
+		let title = (card.get_data ().Model.replace ('-', '') + " - " + card.get_data ().Brand.replace ('-', ''));
 		// Contains the active history section.
 		let active_section = null; let ids = ["div.hproviders, div.hproviders > div.history-content",
 		"div.husers, div.husers > div.history-content", "div.hbugs, div.hbugs > div.history-content",
 		"div.hsolves, div.hsolves > div.history-content", "div.hservices, div.hservices > div.history-content"];
 		// Draws a popup widget to display equipment history.
-		draw_basic_widget ("../views/history.html", 600, ("Historique de " + title), "eq-hty", (widget) => {
+		draw_basic_widget ("../views/history.html", 600, ("History of " + title), "eq-hty", (widget) => {
 			// Contains all options id created to this widget and then removes all unusefull options.
 			let opts_ids = widget.get_options_ids (); $ (opts_ids [1] + ", " + opts_ids [2]).remove ();
 			// Sets the title text and content text of the last widget option.
-			$ (opts_ids [3]).attr ("title", "Fermer la fenêtre.").text ("Retour");
+			$ (opts_ids [3]).attr ("title", "Close window.").text ("Back");
 			// Selects providers as default value.
 			apply_accordeon_effect (ids [0], null); active_section = ids [0];
 			// Fixing "click" event on proviers history.
@@ -437,7 +448,7 @@ function generic_task (type, title, ready = null, drop_init = null, card_ref = n
 					// Copy the final result to clipboard and disables this input.
 					window.navigator.clipboard.writeText (id_viewer.value); id_viewer.disabled = true;
 					// Displays a browser alert.
-					alert ("L'identifiant " + id_viewer.value + " a été copier dans le presse-papier."); id_viewer.value = prev_val;
+					alert ("The identifier " + id_viewer.value + " was copied to the clipboard."); id_viewer.value = prev_val;
 				// For bug adding.
 				}); if (type === "add-bug") $ ("div.problem-date, div.problem-description").css ("display", "inline-block");
 				// For solve adding.
@@ -452,7 +463,7 @@ function generic_task (type, title, ready = null, drop_init = null, card_ref = n
 		}, [{id: "div.last-name > input"}, {id: "div.first-name > input"}, {id: "div.guest-address > input"}, {id: "div.serv-ref > input"},
 			{id: "div.bug-date > input", initial: today}, {id: "div.cancel-date > input", initial: today}, {id: "div.serv-address > input"},
 			{id: "div.start-date > input", initial: today}, {id: "div.ending-date > input"}, {id: "div.bugs-report > textarea"},
-			{id: "div.dropdown > select", initial: ((typeof drop_init === "string") ? drop_init : "Aucun"), type: "dropdown"},
+			{id: "div.dropdown > select", initial: ((typeof drop_init === "string") ? drop_init : "None"), type: "dropdown"},
 			{id: "div.solve-date > input", initial: today}, {id: "div.serv-provider > input"}, {id: "div.serv-type > input"},
 			{id: "div.solve-report > textarea"}
 		], widget => {
@@ -465,9 +476,9 @@ function generic_task (type, title, ready = null, drop_init = null, card_ref = n
 					// Checks variables existance.
 					if (window.hasOwnProperty ("usrs_sec_idx") && window.active_option === "div.users" && window.usrs_sec_idx === 0) {
 						// Gets availables users total count.
-						let count = window.avb_usr_crud.get_data ().length; server.data.Nom = server.data.Nom.toUpperCase ();
+						let count = window.avb_usr_crud.get_data ().length; server.data.Name = server.data.Name.toUpperCase ();
 						// Corrects the passe surname value.
-						server.data ["Prénom(s)"] = str_capitalize (server.data ["Prénom(s)"]);
+						server.data ["Surname(s)"] = str_capitalize (server.data ["Surname(s)"]);
 						// Adds the associated data card to this section.
 						window.draw_user (server.data, window.avb_usr_crud, count, (count + 1));
 						// Updates the associated crud of the current services manager.
@@ -475,9 +486,9 @@ function generic_task (type, title, ready = null, drop_init = null, card_ref = n
 					// Otherwise.
 					} else if (window.active_option === "div.equipments") {
 						// Adds a selectable user selection for equipment.
-						let count = window.usr_slt_crud.get_data ().length; server.data.Nom = server.data.Nom.toUpperCase ();
+						let count = window.usr_slt_crud.get_data ().length; server.data.Name = server.data.Name.toUpperCase ();
 						// Corrects the passe surname value.
-						server.data ["Prénom(s)"] = str_capitalize (server.data ["Prénom(s)"]);
+						server.data ["Surname(s)"] = str_capitalize (server.data ["Surname(s)"]);
 						// Adds the associated data card to this section.
 						window.draw_usr_slt_data (server.data, count, (count + 1));
 						// Updates the associated crud of the current services manager.
@@ -521,9 +532,9 @@ function generic_task (type, title, ready = null, drop_init = null, card_ref = n
 							// Gets availables problems total count.
 							let count = window.bgs_crud.get_data ().length; let pdate = server.data.date.split ('-'); window.draw_bug ({
 								Date: parse_date (parseInt (pdate [2]), parseInt (pdate [1]), parseInt (pdate [0])),
-								Description: server.data.description, Marque: server.data.marque, Model: server.data.model,
-								Equipement: (server.data.model + " - " + server.data.marque), Description: server.data.description,
-								ID: server.data._id, disabled: ["ID", "Model", "Marque"]
+								Description: server.data.description, Brand: server.data.brand, Model: server.data.model,
+								Equipment: (server.data.model + " - " + server.data.brand), Description: server.data.description,
+								ID: server.data._id, disabled: ["ID", "Model", "Brand"]
 							}, window.bgs_crud, count, (count + 1)); listen_crud_data (window.bgs_crud);
 						// Otherwise.
 						} else destroy_data_card (card_ref, toolbar);
@@ -584,13 +595,13 @@ function displayer (cookie, cookie_value, title, message, id, delay = 0) {
 }
 
 // Greets the logged user.
-function greet_user () {displayer ("it_welcome", "it_greet", "Message de bienvenu",
-	"Soyez le bienvenu sur notre application de gestion d'un parc informatique.", "welcome-msg");
+function greet_user () {displayer ("it_welcome", "it_greet", "Welcome message",
+	"Welcome to our IT management application.", "welcome-msg");
 }
 
 // Warns user about cookies using.
-function warn_user () {displayer ("it_cookie", "notified", "Message informatif",
-	"Cette application utilise les cookies pour vous donnez une expérience utilisateur avancée.", "cookie-msg", 20000);
+function warn_user () {displayer ("it_cookie", "notified", "Informative message",
+	"This application uses cookies to give you an advanced user experience.", "cookie-msg", 20000);
 }
 
 // Called when this web page is fulled loaded.
@@ -652,7 +663,7 @@ $ (() => {
 				"eq_wdm", "unassignment", "selected_equipment", "draw_equipment", "draw_service", "elmt_slt", "draw_svc_slt_data",
 				"draw_usr_slt_data", "draw_user", "draw_bug"]); set_cookie ("it_user", undefined, (20 / 60));
 				// Loads IT manager login web page.
-				load_view ("../views/sign.html", "div.views", "Chargement...", "Chargement de la page de connexion...");
+				load_view ("../views/sign.html", "div.views", "Loading...", "Loading login page...");
 			});
 		}
 	// Animates the dashboard.

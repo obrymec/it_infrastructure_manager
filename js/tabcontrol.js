@@ -1,3 +1,14 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @author Obrymec - obrymecsprinces@gmail.com
+* @fileoverview Tab control component.
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @version 0.0.2
+* @file sign.js
+*/
+
 // Creating tab control widget class.
 function TabControl (parent, id = null) {
 	// Attributes.

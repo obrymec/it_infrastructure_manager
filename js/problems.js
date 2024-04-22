@@ -1,5 +1,16 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Loads registered problems about equipments.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @file problems.js
+* @version 0.0.2
+*/
+
 // Attributes.
-window.bgs_crud = new CrudView ("div.problems-manager", ["Date", "Description", "Equipement", "ID"], "bgs-crud");
+window.bgs_crud = new CrudView ("div.problems-manager", ["Date", "Description", "Equipment", "ID"], "bgs-crud");
 
 // Draws a bug data.
 function draw_bug (item, toolbar, index, length) {
@@ -27,8 +38,8 @@ function draw_bug (item, toolbar, index, length) {
 			.css ("box-shadow", "0 0 8px gray");
 		}, function () {$ (this).css ("background-image", "none").css ("box-shadow", "0 0 0 transparent");});
 		// Overrides data card options.
-		bscard.override_options ([{text: "Résoudre", title: "J'ai trouvé une solution à ce problème.",
-			click: () => commum_task ("add-solve", "Réparation d'un équipement", bscard, true, toolbar)
+		bscard.override_options ([{text: "Solve", title: "I found a solution to this problem.",
+			click: () => commum_task ("add-solve", "Repair of equipment", bscard, true, toolbar)
 		// Shows the card.
 		}]); window.setTimeout (() => bscard.visibility (true), window.DELAY); window.DELAY += 150;
 		// Contains all data that will be shown.
@@ -51,10 +62,10 @@ function load_bugs_data () {
 			// Contains the filtered problem date.
 			let pdate = element.date.split ('-');
 			// Draws all availables bugs.
-			draw_bug (new Object ({ID: element._id, Marque: element.marque, Model: element.model,
+			draw_bug (new Object ({ID: element._id, Brand: element.brand, Model: element.model,
 				Date: parse_date (parseInt (pdate [2]), parseInt (pdate [1]), parseInt (pdate [0])),
-				Description: element.description, Equipement: (element.model + " - " + element.marque),
-				disabled: ["ID", "Model", "Marque"]
+				Description: element.description, Equipment: (element.model + " - " + element.brand),
+				disabled: ["ID", "Model", "Brand"]
 			}), window.bgs_crud, index, server.data.length);
 		// Listens crud data.
 		}); listen_crud_data (window.bgs_crud);
@@ -64,15 +75,15 @@ function load_bugs_data () {
 // Called when this web page is fulled loaded.
 $ (() => {
 	// Changes the dashboard text title and overrides the current crud buttons title.
-	animate_text (__ ("div.big-title > label"), "Problèmes", 35); sets_crud_btns_title ("problème", window.bgs_crud);
+	animate_text (__ ("div.big-title > label"), "Problems", 35); sets_crud_btns_title ("problem", window.bgs_crud);
 	// Fixing "click" event on crud add button.
-	$ (window.bgs_crud.get_add_button_id ()).click (() => generic_task ("add-bug", "Signalement d'un problème", () => {
+	$ (window.bgs_crud.get_add_button_id ()).click (() => generic_task ("add-bug", "Reporting a problem", () => {
 		// Loads all availables equipments.
 		make_request ("/eq-service", "GET", new Object ({}), server => {
 			// Contains all options that will be shown.
 			let options = []; server.data = (!Array.isArray (server.data) ? [server.data] : server.data);
 			// Generating all loaded options.
-			for (let opt of server.data) options.push ({left: opt.model, right: opt.marque, id: opt._id});
+			for (let opt of server.data) options.push ({left: opt.model, right: opt.brand, id: opt._id});
 			// Overrides dropdown options.
 			override_dropdown_options ("div.dropdown > select", options);
 		});

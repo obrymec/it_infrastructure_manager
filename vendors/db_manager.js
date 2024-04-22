@@ -1,3 +1,14 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Manages requests between database and server.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @file db_manager.js
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @version 0.0.2
+*/
+
 ///////////////////////////////////////////////////////////[Attributes and dependences]/////////////////////////////////////////////////////
 let link = null, client = null;
 const {MongoClient, ObjectID, ServerApiVersion} = require ("mongodb");
@@ -105,7 +116,7 @@ function _delete_operation (error, response, colname, result) {
 	// Otherwise.
 	else {
 		// Warns the listener about data deletion.
-   		console.log (("Some document(s) has/have been deleted successfully on {" + colname + '}'), "collection."); result (response);
+   	console.log (("Some document(s) has/have been deleted successfully on {" + colname + '}'), "collection."); result (response);
 	}
 }
 

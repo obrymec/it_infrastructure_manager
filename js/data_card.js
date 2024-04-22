@@ -1,3 +1,14 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @author Obrymec - obrymecsprinces@gmail.com
+* @fileoverview Data card component.
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @file data_card.js
+* @version 0.0.2
+*/
+
 // Creating data card class.
 function DataCard (parent, data = new Object ({}), id = null) {
 	// Attributes.

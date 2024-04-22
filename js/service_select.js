@@ -1,5 +1,16 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Loads available service to be affected.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @file select_service.js
+* @created 2021-12-17
+* @updated 2024-04-21
+* @supported DESKTOP
+* @version 0.0.2
+*/
+
 // Attributes.
-window.svc_slt_crud = new CrudView ("div.service-select", ["Référence", "Type", "Prestataire", "Adresse du prestataire", "ID"], "svc-slt");
+window.svc_slt_crud = new CrudView ("div.service-select", ["Reference", "Type", "Provider", "Provider address", "ID"], "svc-slt");
 
 // Draws all availables data from an array of objects.
 function draw_svc_slt_data (item, index, length) {
@@ -21,7 +32,7 @@ function draw_svc_slt_data (item, index, length) {
 		// Fix "click" event on this current card to opens a widget popup about service affectation.
 		scard.override_data (item); scard.click (() => {
 			// Binds data and runs commun tasks.
-			window.elmt_slt = _.extend (scard.get_data (), {ref: "service"}); commum_task ("assignment", "Affectation d'un service");
+			window.elmt_slt = _.extend (scard.get_data (), {ref: "service"}); commum_task ("assignment", "Assignment of a service");
 		// Shows the card and then increases the current delay.
 		}); window.setTimeout (() => scard.visibility (true), window.DELAY); window.DELAY += 150;
 		// Contains all data that will be shown.
@@ -40,8 +51,8 @@ function load_services_data () {
 		// Loading availables services.
 		window.DELAY = 0; server.data.forEach ((element, index) => {
 			// Draws all logged services.
-			draw_svc_slt_data (new Object ({ID: element._id, "Adresse du prestataire": element.address, Prestataire: element.provider,
-				"Référence": ((typeof element.reference === "string") ? element.reference : null), Type: element.type, disabled: ["ID"]
+			draw_svc_slt_data (new Object ({ID: element._id, "Provider address": element.address, Provider: element.provider,
+				Reference: ((typeof element.reference === "string") ? element.reference : null), Type: element.type, disabled: ["ID"]
 			}), index, server.data.length);
 		// Listens crud data.
 		}); listen_crud_data (window.svc_slt_crud);
@@ -51,7 +62,7 @@ function load_services_data () {
 // Called when this web page is fulled loaded.
 $ (() => {
 	// Fixing "click" event on crud add button.
-	$ (window.svc_slt_crud.get_add_button_id ()).click (() => generic_task ("add-service", "Enregistrer un service"));
+	$ (window.svc_slt_crud.get_add_button_id ()).click (() => generic_task ("add-service", "Register a service"));
 	// Fixing "click" event on crud refresh button.
 	$ (window.svc_slt_crud.get_refresh_button_id ()).click (() => {if (network_manager ()) load_services_data ();});
 	// Overrides the current crud buttons title and loads all availables services from the data base.
