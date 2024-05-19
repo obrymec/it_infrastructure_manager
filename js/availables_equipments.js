@@ -4,7 +4,7 @@
 * @author Obrymec - obrymecsprinces@gmail.com
 * @file available_equipments.js
 * @created 2021-12-17
-* @updated 2024-04-21
+* @updated 2024-05-19
 * @supported DESKTOP
 * @version 0.0.2
 */
@@ -29,7 +29,7 @@ $ (() => {
 			// Draws all logged equipments.
 			draw_equipment (new Object ({
 				Model: element.model, ID: element._id, "Provider address": element.provider.address,
-				"Technical characters": element.description, "Date of purchase": parse_date (date [0], date [1], date [2]),
+				"Technical characters": element.description, "Purchase date": parse_date (date [0], date [1], date [2]),
 				"Purchase status": element.buy_state, "Usage status": element.using_state,
 				Provider: (element.provider.surname + ' ' + element.provider.name.toUpperCase ()),
 				Brand: element.brand, Price: (parse_float (element.price, 2) + " XOF"),

@@ -3,7 +3,7 @@
 * @fileoverview Manages historical data section.
 * @author Obrymec - obrymecsprinces@gmail.com
 * @created 2021-12-17
-* @updated 2024-04-21
+* @updated 2024-05-19
 * @supported DESKTOP
 * @file history.js
 * @version 0.0.2
@@ -52,7 +52,7 @@ function load_history_data () {
 				Name: old_user.name.toUpperCase (), "Surname(s)": old_user.surname, Address: old_user.address,
 				"Assignment date": parse_date (parseInt (adate [2]), parseInt (adate [1]), parseInt (adate [0])),
 				"End date": parse_date (parseInt (edate [2]), parseInt (edate [1]), parseInt (edate [0])),
-				"Date of withdrawal": parse_date (parseInt (cdate [2]), parseInt (cdate [1]), parseInt (cdate [0])), 
+				"Withdrawal date": parse_date (parseInt (cdate [2]), parseInt (cdate [1]), parseInt (cdate [0])), 
 			}), id);
 		// For problem(s) and solution(s) history data.
 		}); server.data.history.old_problems.forEach (old_problem => {
@@ -81,7 +81,7 @@ function load_history_data () {
 				"Assignment date": parse_date (parseInt (adate [2]), parseInt (adate [1]), parseInt (adate [0])),
 				"End date": parse_date (parseInt (edate [2]), parseInt (edate [1]), parseInt (edate [0])),
 				Provider: old_service.service_provider,
-				"Date of withdrawal": parse_date (parseInt (cdate [2]), parseInt (cdate [1]), parseInt (cdate [0])),
+				"Withdrawal date": parse_date (parseInt (cdate [2]), parseInt (cdate [1]), parseInt (cdate [0])),
 				Reference: ((typeof old_service.reference === "string") ? old_service.reference : null), Type: old_service.type				
 			}), id);
 		// For affected services data.

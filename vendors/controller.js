@@ -1,3 +1,14 @@
+/**
+* @project It Manager - https://it-infrastructure-manager.onrender.com
+* @fileoverview Back-end controller for client requests.
+* @author Obrymec - obrymecsprinces@gmail.com
+* @file controller.js
+* @created 2021-12-19
+* @updated 2024-04-19
+* @supported DESKTOP
+* @version 0.0.2
+*/
+
 // Dependencies.
 const password_validator = require ("password-validator");
 const email_validator = require ("email-validator");
@@ -12,23 +23,23 @@ function _check_number_input (inp, ans) {
 	// Converts the input into an integer.
 	inp.value = parseInt (inp.value);
 	// The input field value is it empty ?
-	if (String (inp.value).length === 3) ans.errors.push ({id: inp.id, message: "Aucune valeur n'a pas été renseignée."});
+	if (String (inp.value).length === 3) ans.errors.push ({id: inp.id, message: "No value has been entered."});
 	// Checks the value type.
-	else if (isNaN (inp.value)) ans.errors.push ({id: inp.id, message: "La valeur n'est pas de type numérique."});
+	else if (isNaN (inp.value)) ans.errors.push ({id: inp.id, message: "The value is not of numeric type."});
 	// Checks the limit of the given value.
-	else if (inp.value > 999999999999) ans.errors.push ({id: inp.id, message: "La valeur est hors des limites prédéfinies."});
+	else if (inp.value > 999999999999) ans.errors.push ({id: inp.id, message: "The value is outside the predefined limits."});
 }
 
 // Checks whether a date input field respects the imposed restrictions.
 function _check_date_input (inp, ans) {
 	// Checks whether the date is empty.
-	if (!inp.value.length) ans.errors.push ({id: inp.id, message: "La valeur de ce champ n'a pas été renseignée."});
+	if (!inp.value.length) ans.errors.push ({id: inp.id, message: "The value of this field has not been entered."});
 	// Checks the date character count.
-	else if (inp.value.length !== 10) ans.errors.push ({id: inp.id, message: "La date renseignée n'est pas valide."});
+	else if (inp.value.length !== 10) ans.errors.push ({id: inp.id, message: "The date entered is not valid."});
 	// Checks the date separator.
 	else if (!inp.value.includes ('/') && !inp.value.includes ('-') && !inp.value.includes ('\\')) {
 		// Generates an error message.
-		ans.errors.push ({id: inp.id, message: "La date ne respecte pas les conventions standard."});
+		ans.errors.push ({id: inp.id, message: "The date does not follow standard conventions."});
 	// Checks the date sections.
 	} else {
 		// Getting the date parts.
@@ -36,7 +47,7 @@ function _check_date_input (inp, ans) {
 		// Checks date parts value type.
 		if (typeof parts [0] !== "number" && typeof parts [1] !== "number" && typeof parts [2] !== "number") {
 			// Generates an error message.
-			ans.errors.push ({id: inp.id, message: "Le format de la date renseignée est incorrecte."});
+			ans.errors.push ({id: inp.id, message: "The format of the date entered is incorrect."});
 		}
 	}
 }
@@ -62,11 +73,11 @@ function _parse_date (date) {
 // Checks whether an email input field respects the imposed restrictions.
 function _check_email_input (inp, ans) {
 	// The given email is empty.
-	if (!inp.value.length) ans.errors.push ({id: inp.id, message: "Ce champ n'a pas été renseigné."});
+	if (!inp.value.length) ans.errors.push ({id: inp.id, message: "This field has not been filled in."});
 	// A character named '@' has been found.
 	if (inp.value.includes ('@')) {
 		// The passed email doesn't respect standard conventions.
-		if (!email_validator.validate (inp.value)) ans.errors.push ({id: inp.id, message: "Le courrier électronique n'est pas valide."});
+		if (!email_validator.validate (inp.value)) ans.errors.push ({id: inp.id, message: "The email is invalid."});
 	// Otherwise.
 	} else _check_name_input (inp, ans);
 }
@@ -76,21 +87,21 @@ function _check_phone_input (inp, ans) {
 	// Converts the input into an integer.
 	inp.value = parseInt (inp.value);
 	// The input field value is it empty ?
-	if (!String (inp.value).length) ans.errors.push ({id: inp.id, message: "Le numéro de téléphone n'a pas été renseigné."});
+	if (!String (inp.value).length) ans.errors.push ({id: inp.id, message: "The telephone number has not been provided."});
 	// Checks the limit of the given value.
-	else if (String (inp.value).length !== 8) ans.errors.push ({id: inp.id, message: "Le numéro de téléphone donné est invalide."});
+	else if (String (inp.value).length !== 8) ans.errors.push ({id: inp.id, message: "The telephone number given is invalid."});
 	// Checks the value type.
-	else if (isNaN (inp.value)) ans.errors.push ({id: inp.id, message: "Ce champ n'est pas de type numérique."});
+	else if (isNaN (inp.value)) ans.errors.push ({id: inp.id, message: "This field is not of numeric type."});
 }
 
 // Returns the original date
 function _get_original_date (date) {
 	// Divides the date into many parts.
 	let parts = date.split (' '); switch (parts [1]) {
-		case "Janvier": parts [1] = "01"; break; case "Février": parts [1] = "02"; break; case "Mars": parts [1] = "03"; break;
-		case "Avril": parts [1] = "04"; break; case "Mai": parts [1] = "05"; break; case "Juin": parts [1] = "06"; break;
-		case "Juillet": parts [1] = "07"; break; case "Août": parts [1] = "08"; break; case "Septembre": parts [1] = "09"; break;
-		case "Octobre": parts [1] = "10"; break; case "Novembre": parts [1] = "11"; break; case "Décembre": parts [1] = "12"; break;
+		case "January": parts [1] = "01"; break; case "Febuary": parts [1] = "02"; break; case "March": parts [1] = "03"; break;
+		case "April": parts [1] = "04"; break; case "May": parts [1] = "05"; break; case "June": parts [1] = "06"; break;
+		case "July": parts [1] = "07"; break; case "August": parts [1] = "08"; break; case "September": parts [1] = "09"; break;
+		case "October": parts [1] = "10"; break; case "November": parts [1] = "11"; break; case "Décember": parts [1] = "12"; break;
 		default: parts [1] = "00"; break;
 	// Returns the final.
 	} return (parts [2] + '-' + parts [1] + '-' + parts [0]).replace ("undefined-00-", '');
@@ -101,17 +112,17 @@ function _check_password_input (inp, ans) {
 	// Creates a password schema.
 	let schema = new password_validator ();
 	// Specifies password requirement.
-	schema.has ().symbols (1, "On doit noté la présence d'au moins un symbol: @, !, #, $, &, +, *, -, %, etc...")
-		.is ().max (16, "Le mot de passe doit comporté au maximum (16) caractères.")
-		.has ().digits (2, "Le mot de passe doit contenir au moins (02) chiffres.")
-		.is ().min (8, "Le mot de passe doit comporté au moins (08) caractères.")
-		.has ().uppercase (1, "On doit avoir au moins une lettre majuscule.")
-		.has ().lowercase (1, "La présence d'au moins une lettre minuscule.")
-		.not ().spaces (1, "Les espaces ne sont pas tolérées.");
+	schema.has ().symbols (1, "We must note the presence of at least one symbol: @, !, #, $, &, +, *, -, %, etc...")
+		.is ().max (16, "The password must contain a maximum of (16) characters.")
+		.has ().digits (2, "The password must contain at least (02) digits.")
+		.is ().min (8, "The password must contain at least (08) characters.")
+		.has ().uppercase (1, "There must be at least one capital letter.")
+		.has ().lowercase (1, "The presence of at least one lowercase letter.")
+		.not ().spaces (1, "Spaces are not tolerated.");
 	// Checks password restrictions.
 	let results = schema.validate (inp.value, new Object ({details: true}));
 	// The input field value is it empty ?
-	if (!inp.value.length) ans.errors.push (new Object ({id: inp.id, message: "Le mot de passe n'a pas été renseigné."}));
+	if (!inp.value.length) ans.errors.push (new Object ({id: inp.id, message: "The password has not been entered."}));
 	// Checks a certains constraints.
 	else if (Array.isArray (results) && results.length) ans.errors.push (new Object ({id: inp.id, message: results [0].message}));
 }
@@ -121,7 +132,7 @@ function _check_name_input (inp, ans) {
 	// Creates a password schema.
 	let schema = new password_validator ();
 	// Specifies password requirement.
-	schema.not ().symbols (1, "On ne doit pas constaté la présence d'au moins l'un des symbols: !, #, $, &, +, *, -, %, etc...");
+	schema.not ().symbols (1, "The presence of at least one of the symbols must not be noted: !, #, $, &, +, *, -, %, etc...");
 	// Checks password restrictions.
 	let results = schema.validate (inp.value, new Object ({details: true}));
 	// Checks a certains constraints.
@@ -148,7 +159,7 @@ function _get_providers_statistics (equipments) {
 
 // Establishes a connection to mongo database.
 function _connect_to_db (success, result) {dbmanager.check_connection (db => success (db), () => result (new Object ({
-	errors: "L'application rencontre des difficultées à se connecter à la base de données."})
+	errors: "The application is having difficulty connecting to the database."})
 ));}
 
 // Checks any input field value.
@@ -165,7 +176,7 @@ function _generic_checker (data) {
 			// Is it a required field ?
 			if (input.required) {
 				// No value specified.
-				if (!input.value.length) answer.errors.push ({id: input.id, message: "Aucune valeur renseignée."});
+				if (!input.value.length) answer.errors.push ({id: input.id, message: "No value entered."});
 				// Otherwise.
 				else if (input.restrictions) _check_name_input (input, answer);
 			// A value has been specified.
@@ -206,7 +217,7 @@ module.exports.add_problem = function add_problem (data, result) {
 		// Checks potentials errors on the given formulary fields.
 		let answer = _generic_checker (data); if (typeof answer.errors === "boolean") {
 			// Checks dropdown value.
-			if (data [2].value.toLowerCase () != "aucun") {
+			if (data [2].value.toLowerCase () != "none") {
 				// Finds equipment that have the given id.
 				dbmanager.find ("it_manager", "equipments", new Object ({query: new Object ({_id: data [3].value})}), res => {
 					// Contains the problem date.
@@ -221,18 +232,16 @@ module.exports.add_problem = function add_problem (data, result) {
 						// Updates the database.
 						}))); dbmanager.update ("it_manager", "equipments", new Object ({problem: new Object ({
 							date: data [0].value, description: data [1].value, solution: new Object ({date: null, description: null})
-						}), using_state: "En panne", affected_user: {name: null, surname: null, address: null}, affected_services: [],
+						}), using_state: "Broken-down", affected_user: {name: null, surname: null, address: null}, affected_services: [],
 							history: history}), new Object ({_id: data [3].value}), false, response => result (new Object ({errors: false,
-							message: ("Un problème a été signalé sur l'équipement <strong>" + data [2].value + "</strong>."),
-							data: _.extend (response.data.problem, new Object ({_id: res._id, model: res.model, marque: res.marque}))
+							message: ("A problem has been reported with the equipment <strong>" + data [2].value + "</strong>."),
+							data: _.extend (response.data.problem, new Object ({_id: res._id, model: res.model, brand: res.brand}))
 						})));
 					// Otherwise.
-					} else result (new Object ({errors: [{id: data [0].id, message: ("La date renseignée ne doit pas être hors des délais "
-						+ " plafonds.")}]}));
+					} else result (new Object ({errors: [{id: data [0].id, message: ("The date provided must not be outside the deadlines.")}]}));
 				});
 			// Otherwise.
-			} else result (new Object ({errors: [{id: data [2].id, message: ("Aucun équipement n'a été sélectionné. Veuillez"
-				+ " sélectionner un équipement sur lequel le problème a été signalé.")}]}));
+			} else result (new Object ({errors: [{id: data [2].id, message: ("No equipment has been selected. Please select a device on which the problem has been reported.")}]}));
 		// Otherwise.
 		} else result (answer);
 	}, result);
@@ -254,13 +263,13 @@ module.exports.add_solution = function add_solution (data, result) {
 					history.old_problems.push (_.extend (res.problem, {solution: {date: data [0].value, description: data [1].value}}));
 					// Updates the database.
 					dbmanager.update ("it_manager", "equipments", new Object ({problem: {date: null, description: null,
-					solution: {date: null, description: null}}, history: history, using_state: "Non affecté"}),
+					solution: {date: null, description: null}}, history: history, using_state: "Unaffected"}),
 						new Object ({_id: data [3].value}), false, () => result (new Object ({errors: false,
-						message: ("Une solution a été proposée pour la réparation de l'équipement <strong>" + data [2].value + "</strong>.")
+						message: ("A solution has been proposed for the repair of the equipment <strong>" + data [2].value + "</strong>.")
 					})));
 				// Otherwise.
-				} else result (new Object ({errors: [{id: data [0].id, message: ("La date renseignée ne peut pas être inférieur à celle"
-					+ " du problème déclaré ou en cours.")}]}));
+				} else result (new Object ({errors: [{id: data [0].id, message: ("The date entered cannot be less than that"
+					+ " of the declared or ongoing problem.")}]}));
 			});
 		// Otherwise.
 		} else result (answer);
@@ -284,16 +293,16 @@ module.exports.add_service = function add_service (data, result) {
 					dbmanager.insert ("it_manager", "services", new Object ({
 						reference: data [0].value, address: data [1].value, provider: data [2].value, type: data [3].value,
 					}), states => result (new Object ({
-						message: ("Le service <strong>" + states.data.provider + "</strong> de type <strong>" + states.data.type
-						+ "</strong> a été correctement mis sur le parc."), errors: false, data: new Object ({
-							ID: states.data._id, "Adresse du prestataire": states.data.address, Prestataire: states.data.provider,
-							"Référence": ((typeof states.data.reference === "string") ? states.data.reference : null),
+						message: ("The service <strong>" + states.data.provider + "</strong> of type <strong>" + states.data.type
+						+ "</strong> has been correctly placed on the park."), errors: false, data: new Object ({
+							ID: states.data._id, Address: states.data.address, Provider: states.data.provider,
+							Reference: ((typeof states.data.reference === "string") ? states.data.reference : null),
 							Type: states.data.type, disabled: ["ID"]
 						})
 					})));
 				// Otherwise.
-				} else result ({errors: ("Le service <strong>" + data [2].value + "</strong> de type <strong>" + data [3].value
-					+ "</strong> a déjà été enregistré sur le parc.")
+				} else result ({errors: ("The service <strong>" + data [2].value + "</strong> of type <strong>" + data [3].value
+					+ "</strong> has already been recorded on the park.")
 				});
 			});
 		// Otherwise.
@@ -318,15 +327,15 @@ module.exports.add_user = function add_user (data, result) {
 					dbmanager.insert ("it_manager", "users", new Object ({
 						name: data [0].value, surname: data [1].value, address: data [2].value
 					}), states => result (new Object ({
-						message: ("L'utilisateur <strong>" + states.data.surname + ' ' + states.data.name.toUpperCase () + "</strong>"
-						+ " a été correctement ajouté au parc."), errors: false, data: new Object ({
-							ID: states.data._id, "Adresse": states.data.address, Nom: states.data.name,
-							"Prénom(s)": states.data.surname, disabled: ["ID"]
+						message: ("The user <strong>" + states.data.surname + ' ' + states.data.name.toUpperCase () + "</strong>"
+						+ " has been successfully added to the park."), errors: false, data: new Object ({
+							ID: states.data._id, Address: states.data.address, Name: states.data.name,
+							"Surname(s)": states.data.surname, disabled: ["ID"]
 						})
 					})));
 				// Otherwise.
-				} else result (new Object ({errors: ("L'utilisateur <strong>" + data [1].value + ' ' + data [0].value + "</strong>"
-					+ " a déjà été enregistré sur le parc.")
+				} else result (new Object ({errors: ("The user <strong>" + data [1].value + ' ' + data [0].value + "</strong>"
+					+ " has already been recorded on the park.")
 				}));
 			});
 		// Otherwise.
@@ -347,7 +356,7 @@ module.exports.add_equipment = function add_equipment (data, result) {
 				if (res == null) {
 					// Inserts the given formulary data into the database.
 					dbmanager.insert ("it_manager", "equipments", new Object ({
-						reference: data [0].value, marque: data [1].value, model: data [2].value, buy_date: data [6].value,
+						reference: data [0].value, brand: data [1].value, model: data [2].value, buy_date: data [6].value,
 						using_state: data [4].value, price: parseInt (data [9].value), buy_state: data [10].value,
 						description: data [5].value, provider: {
 							surname: data [3].value, address: data [7].value, phone_number: parseInt (data [8].value),
@@ -356,20 +365,20 @@ module.exports.add_equipment = function add_equipment (data, result) {
 							old_users: [], old_problems: [], old_services: []
 						}, problem: {date: null, description: null, solution: {date: null, description: null}}
 					}), states => result (new Object ({
-						message: ("L'équipement <strong>" + states.data.model + " - " + states.data.marque
-						+ "</strong> a été correctement mis sur le parc."), errors: false, data: new Object ({
-							Model: states.data.model, ID: states.data._id, "Adresse du fournisseur": states.data.provider.address,
-							"Caractères technique": states.data.description, "Date d'achat": states.data.buy_date,
-							"Etat d'achat": states.data.buy_state, "Etat d'utilisation": states.data.using_state,
-							Fournisseur: (states.data.provider.surname + ' ' + states.data.provider.name.toUpperCase ()),
-							Marque: states.data.marque, Prix: states.data.price,
-							"Référence": ((typeof states.data.reference === "string") ? states.data.reference : null),
-							"Téléphone du fournisseur": states.data.provider.phone_number, disabled: ["Model", "ID"]
+						message: ("The equipment <strong>" + states.data.model + " - " + states.data.brand
+						+ "</strong> has been correctly placed on the park."), errors: false, data: new Object ({
+							Model: states.data.model, ID: states.data._id, "Provider address": states.data.provider.address,
+							"Technical characters": states.data.description, "Purchase date": states.data.buy_date,
+							"Purchase status": states.data.buy_state, "Usage status": states.data.using_state,
+							Provider: (states.data.provider.surname + ' ' + states.data.provider.name.toUpperCase ()),
+							Brand: states.data.brand, Price: states.data.price,
+							Reference: ((typeof states.data.reference === "string") ? states.data.reference : null),
+							"Provider phone": states.data.provider.phone_number, disabled: ["Model", "ID"]
 						})
 					})));
 				// Otherwise.
-				} else result (new Object ({errors: ("L'équipement <strong>" + data [2].value + " - " + data [1].value
-					+ "</strong> a été déjà enregistré sur le parc.")
+				} else result (new Object ({errors: ("The equipment <strong>" + data [2].value + " - " + data [1].value
+					+ "</strong> has already been recorded in the park.")
 				}));
 			});
 		// Otherwise.
@@ -382,7 +391,7 @@ module.exports.load_availables_equipments = function load_availables_equipments 
 	// Connects app to the database.
 	_connect_to_db (() => {
 		// Contains the request query.
-		let query = new Object ({$or: [{using_state: "Non affecté"}, {using_state: "Hors du parc"}]});
+		let query = new Object ({$or: [{using_state: "Unaffected"}, {using_state: "Out of the park"}]});
 		// Checks whether the specified equipment is already exists on the database.
 		dbmanager.find ("it_manager", "equipments", new Object ({query: query}), res => result (new Object ({data: res})), true);
 	}, result);
@@ -393,7 +402,7 @@ module.exports.load_maintenance_equipments = function load_maintenance_equipment
 	// Connects app to the database.
 	_connect_to_db (() => {
 		// Contains the request query.
-		let query = new Object ({using_state: "En panne"});
+		let query = new Object ({using_state: "Broken-down"});
 		// Checks whether the specified equipment is already exists on the database.
 		dbmanager.find ("it_manager", "equipments", new Object ({query: query}), res => result (new Object ({data: res})), true);
 	}, result);
@@ -404,7 +413,7 @@ module.exports.load_service_equipments = function load_service_equipments (resul
 	// Connects app to the database.
 	_connect_to_db (() => {
 		// Contains the request query.
-		let query = new Object ({using_state: "Affecté"});
+		let query = new Object ({using_state: "Affected"});
 		// Checks whether the specified equipment is already exists on the database.
 		dbmanager.find ("it_manager", "equipments", new Object ({query: query}), res => result (new Object ({data: res})), true);
 	}, result);
@@ -496,7 +505,7 @@ module.exports.assignment = function assignment (data, result) {
 			// Compares the given dates.
 			if (_parse_date (data.data [0].value) < _parse_date (data.data [1].value)) {
 				// Checks dropdown value.
-				if (data.data [2].value.toLowerCase () != "aucun") {
+				if (data.data [2].value.toLowerCase () != "none") {
 						// Finds equipment that have the given id.
 						dbmanager.find ("it_manager", "equipments", new Object ({query: new Object ({_id: data.data [3].value})}), res => {
 							// Checks assign date.
@@ -505,36 +514,36 @@ module.exports.assignment = function assignment (data, result) {
 								if (data.additional.ref === "service") {
 									// Adds the current service to the selected equipment.
 									let afd_srv = res.affected_services; afd_srv.push (new Object ({
-										service_provider: data.additional.Prestataire,
-										address: data.additional ["Adresse du prestataire"], reference: data.additional ["Référence"],
+										service_provider: data.additional.Provider,
+										address: data.additional ["Provider address"], reference: data.additional.Reference,
 										type: data.additional.Type, assign_date: data.data [0].value, expired_date: data.data [1].value
 									// Updates the database.
 									})); dbmanager.update ("it_manager", "equipments", new Object ({affected_services: afd_srv}),
 									{_id: data.data [3].value}, false, () => result (new Object ({errors: false,
-										message: ("L'équipement <strong>"
-										+ data.data [2].value + "</strong> a été correctement affecté au service <strong>"
-										+ data.additional.Prestataire + "</strong> de type <strong>" + data.additional.Type + "</strong>.")
+										message: ("The equipment <strong>"
+										+ data.data [2].value + "</strong> has been correctly assigned to the service <strong>"
+										+ data.additional.Provider + "</strong> of type <strong>" + data.additional.Type + "</strong>.")
 									})));
 								// For user management.
 								} else if (data.additional.ref === "user") dbmanager.update ("it_manager", "equipments",
 									new Object ({affected_user: new Object ({
-										name: data.additional.Nom, surname: data.additional ["Prénom(s)"], address: data.additional.Adresse,
+										name: data.additional.Name, surname: data.additional ["Surname(s)"], address: data.additional.Address,
 										assign_date: data.data [0].value, expired_date: data.data [1].value
-									}), using_state: "Affecté"}), new Object ({_id: data.data [3].value}), false, () => result (new Object ({
-									errors: false, message: ("L'équipement <strong>" + data.data [2].value
-									+ "</strong> a été correctement affecté à l'utilisateur <strong>" + data.additional ["Prénom(s)"]
-									+ ' ' + data.additional.Nom.toUpperCase () + "</strong>.")
+									}), using_state: "Affected"}), new Object ({_id: data.data [3].value}), false, () => result (new Object ({
+									errors: false, message: ("The equipment <strong>" + data.data [2].value
+									+ "</strong> was correctly assigned to the user <strong>" + data.additional ["Surname(s)"]
+									+ ' ' + data.additional.Name.toUpperCase () + "</strong>.")
 								})));
 							// Otherwise.
-							} else result (new Object ({errors: [{id: data.data [0].id, message: ("La date d'affectation ne peut être en"
-								+ " aucun cas inférieur à celle d'achat du produit.")}]}));
+							} else result (new Object ({errors: [{id: data.data [0].id, message: ("The assignment date cannot be in"
+								+ " no case lower than that of purchasing the product.")}]}));
 						});
 				// Otherwise.
-				} else result (new Object ({errors: [{id: data.data [2].id, message: ("Aucun équipement n'a été sélectionné. Veuillez"
-					+ " sélectionner un équipement à affecté au service sélectionné.")}]}));
+				} else result (new Object ({errors: [{id: data.data [2].id, message: ("No equipment has been selected. Please"
+					+ " select equipment to be assigned to the selected service.")}]}));
 			// Otherwise.
-			} else result (new Object ({errors: [{id: data.data [1].id, message: ("La date d'expiration ne peut être en aucun cas" +
-				" inférieur ou égale à celle de début")}]}));
+			} else result (new Object ({errors: [{id: data.data [1].id, message: ("The expiration date cannot under any circumstances be" +
+				" less than or equal to the start.")}]}));
 		// Otherwise.
 		} else result (answer);
 	}, result);
@@ -566,20 +575,20 @@ module.exports.unassignment = function unassignment (data, result) {
 						history.old_users.push (_.extend (afd_user, new Object ({cancel_date: data.data [0].value})));
 						// Updates the database.
 						dbmanager.update ("it_manager", "equipments", {affected_user: {name: null, surname: null, address: null},
-						using_state: "Non affecté", history: history}, {_id: data.data [2].value}, false, () => result (new Object ({
-							errors: false, message: ("L'équipement <strong>" + data.data [1].value
-							+ "</strong> a été retirer de l'utilisateur <strong>" + afd_user.surname + ' ' + afd_user.name + "</strong>.")
+						using_state: "Unaffected", history: history}, {_id: data.data [2].value}, false, () => result (new Object ({
+							errors: false, message: ("The equipment <strong>" + data.data [1].value
+							+ "</strong> was removed from the user <strong>" + afd_user.surname + ' ' + afd_user.name + "</strong>.")
 						})));
 					// Otherwise.
-					} else result (new Object ({errors: [{id: data.data [0].id, message: ("Vous devez renseigner une date qui ne "
-						+ "doit pas dépassée les délais plafonds.")}]}));
+					} else result (new Object ({errors: [{id: data.data [0].id, message: ("You must enter a date that must not "
+						+ "exceed the deadlines.")}]}));
 				// For service management.
 				} else if (data.additional.ref === "service") {
 					// Contains the service that will be unassigned.
-					let serv = new Object ({provider: data.additional.Prestataire, address: data.additional ["Adresse du prestataire"],
-						assign_date: _get_original_date (data.additional ["Date d'affectation"]), cancel_date: data.data [0].value,
-						expired_date: _get_original_date (data.additional ["Date d'expiration"]), type: data.additional.Type,
-						reference: (data.additional.hasOwnProperty ("Référence") ? data.additional ["Référence"] : null)
+					let serv = new Object ({provider: data.additional.Provider, address: data.additional ["Provider Address"],
+						assign_date: _get_original_date (data.additional ["Assignment date"]), cancel_date: data.data [0].value,
+						expired_date: _get_original_date (data.additional ["Expiration date"]), type: data.additional.Type,
+						reference: (data.additional.hasOwnProperty ("Reference") ? data.additional ["Reference"] : null)
 					// Removes the old service assignment from the affected services list.
 					}); let afd_services = _.filter (res.affected_services, obj => {
 						// Checks the service date.
@@ -596,13 +605,13 @@ module.exports.unassignment = function unassignment (data, result) {
 						// Updates the database.
 						dbmanager.update ("it_manager", "equipments", new Object ({affected_services: afd_services, history: history}),
 						new Object ({_id: data.data [2].value}), false, () => result (new Object ({
-							errors: false, message: ("L'équipement <strong>" + data.data [1].value
-							+ "</strong> a été retirer du service <strong>" + serv.provider + "</strong> de type "
+							errors: false, message: ("The equipment <strong>" + data.data [1].value
+							+ "</strong> was removed from service <strong>" + serv.provider + "</strong> of type "
 							+ serv.type + "</strong>.")
 						})));
 					// Otherwise.
-					} else result (new Object ({errors: [{id: data.data [0].id, message: ("Vous devez renseigner une date qui ne doit"
-						+ " pas être hors des délais plafonds.")}]}));
+					} else result (new Object ({errors: [{id: data.data [0].id, message: ("You must enter a date which should not"
+						+ " be outside the ceiling deadlines.")}]}));
 				}
 			});
 		// Otherwise.
@@ -615,10 +624,10 @@ module.exports.get_out = function get_out (data, result) {
 	// Connects app to the database.
 	_connect_to_db (() => {
 		// Gets out the target equipment.
-		dbmanager.update ("it_manager", "equipments", new Object ({using_state: "Hors du parc",
+		dbmanager.update ("it_manager", "equipments", new Object ({using_state: "Out of the park",
 		problem: {date: null, description: null, solution: {date: null, description: null}}}), new Object ({_id: data.id}),
-		false, () => result (new Object ({errors: false, message: ("L'équipement <strong>" + data.model + " - " + data.marque
-			+ "</strong> est maintenant mis hors du parc.")
+		false, () => result (new Object ({errors: false, message: ("The equipment <strong>" + data.model + " - " + data.brand
+			+ "</strong> is now out of the park.")
 		})));
 	}, result);
 }
@@ -637,7 +646,7 @@ module.exports.load_allowed_service_equipments = function load_allowed_service_e
 	// Connects app to the database.
 	_connect_to_db (() => {
 		// Contains the search query.
-		let query = new Object ({$or: [{using_state: "Hors du parc"}, {using_state: "Non affecté"}, {using_state: "Affecté"}]});
+		let query = new Object ({$or: [{using_state: "Out of the park"}, {using_state: "Unaffected"}, {using_state: "Affected"}]});
 		// Finds all equipments from the database.
 		dbmanager.find ("it_manager", "equipments", new Object ({query: query}), res => {
 			// Returns all equipments whitch this service isn't affected or expired.
@@ -645,7 +654,7 @@ module.exports.load_allowed_service_equipments = function load_allowed_service_e
 				// Returns all services that are different of the passed service.
 				return (_.filter (obj.affected_services, item => {
 					// A service has been found.
-					if (item.service_provider === data.Prestataire && item.type === data.Type) {
+					if (item.service_provider === data.Provider && item.type === data.Type) {
 						// Is it expired ?
 						if (_parse_date (item.expired_date) <= _get_date (true)) return false; else return true;
 					// Otherwise.
@@ -667,7 +676,7 @@ module.exports.load_running_services = function load_running_services (result) {
 				// Whether the current service is running.
 				if (_parse_date (service.expired_date) > _get_date (true)) {
 					// Adds the current service to found result.
-					services.push (_.extend (service, new Object ({model: eq.model, marque: eq.marque, _id: eq._id})));
+					services.push (_.extend (service, new Object ({model: eq.model, brand: eq.brand, _id: eq._id})));
 				}
 			// Returns the final result.
 			}); result (new Object ({data: services}));
@@ -686,7 +695,7 @@ module.exports.load_expired_services = function load_expired_services (result) {
 				// Whether the current service is running.
 				if (_parse_date (service.expired_date) <= _get_date (true)) {
 					// Adds the current service to found result.
-					services.push (_.extend (service, new Object ({model: eq.model, marque: eq.marque, _id: eq._id})));
+					services.push (_.extend (service, new Object ({model: eq.model, brand: eq.brand, _id: eq._id})));
 				}
 			// Returns the final result.
 			}); result (new Object ({data: services}));
@@ -704,7 +713,7 @@ module.exports.load_affected_users = function load_affected_users (result) {
 			let affected_users = []; res = (Array.isArray (res) ? res : [res]);
 			// Getting all affected users from the loaded equipments.
 			for (let eq of res) if (eq.affected_user.name != null) affected_users.push (_.extend (eq.affected_user, new Object ({
-				model: eq.model, marque: eq.marque, _id: eq._id
+				model: eq.model, brand: eq.brand, _id: eq._id
 			// Returns the final result.
 			}))); result (new Object ({data: affected_users}));
 		}, true);
@@ -721,7 +730,7 @@ module.exports.load_availables_problems = function load_availables_problems (res
 			let problems = []; res = (Array.isArray (res) ? res : [res]);
 			// Getting all availables problems from the loaded equipments.
 			for (let eq of res) if (eq.problem.date != null) problems.push (_.extend (eq.problem, new Object ({
-				model: eq.model, marque: eq.marque, _id: eq._id
+				model: eq.model, brand: eq.brand, _id: eq._id
 			// Returns the final result.
 			}))); result (new Object ({data: problems}));
 		}, true);
@@ -733,7 +742,7 @@ module.exports.load_goods_providers = function load_goods_providers (result) {
 	// Connects app to the database.
 	_connect_to_db (() => {
 		// Finds all equipments from the database.
-		dbmanager.find ("it_manager", "equipments", new Object ({query: new Object ({using_state: "En panne"})}), res => {
+		dbmanager.find ("it_manager", "equipments", new Object ({query: new Object ({using_state: "Broken-down"})}), res => {
 			// Returns all goods providers.
 			result (new Object ({data: _.filter (_get_providers_statistics (res), obj => {return (obj.problem_count < 3);})}));
 		}, true);
@@ -745,7 +754,7 @@ module.exports.load_bads_providers = function load_bads_providers (result) {
 	// Connects app to the database.
 	_connect_to_db (() => {
 		// Finds all equipments from the database.
-		dbmanager.find ("it_manager", "equipments", new Object ({query: new Object ({using_state: "En panne"})}), res => {
+		dbmanager.find ("it_manager", "equipments", new Object ({query: new Object ({using_state: "Broken-down"})}), res => {
 			// Returns all goods providers.
 			result (new Object ({data: _.filter (_get_providers_statistics (res), obj => {return (obj.problem_count >= 3);})}));
 		}, true);
@@ -764,7 +773,7 @@ module.exports.sign_up = function sign_up (data, result) {
 				dbmanager.insert ("it_manager", "administrators", new Object ({login: data [0].value, password: data [1].value}),
 				states => result (new Object ({errors: false})));
 			// Otherwise.
-			} else result (new Object ({errors: [new Object ({message: "Le mot de passe n'a pas été confirmer."})]}))
+			} else result (new Object ({errors: [new Object ({message: "The password has not been confirmed."})]}))
 		// Otherwise.
 		} else result (answer);
 	}, result);
@@ -782,7 +791,7 @@ module.exports.sign_in = function sign_in (data, result) {
 			// The passed administrator is defined.
 			if (res != null) result (new Object ({errors: false, user_id: data [0].value.trimLeft ().trimRight ()}));
 			// Otherwise.
-			else result (new Object ({errors: [new Object ({message: "Votre identifiant ou mot de passe n'est pas valide."})]}));
+			else result (new Object ({errors: [new Object ({message: "Your username or password is invalid."})]}));
 		});
 	}, result);
 }

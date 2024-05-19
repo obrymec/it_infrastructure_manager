@@ -3,7 +3,7 @@
 * @fileoverview Equipments displaying section.
 * @author Obrymec - obrymecsprinces@gmail.com
 * @created 2021-12-17
-* @updated 2024-04-21
+* @updated 2024-05-19
 * @file equipments.js
 * @supported DESKTOP
 * @version 0.0.2
@@ -70,7 +70,7 @@ function draw_equipment (item, toolbar, index, length) {
 			}}, {text: "Get out", title: "Take this gear out of the park.", click: () => {
 				// Runs process for get out of the current equipment.
 				let cdata = eq_card.get_data (); let data = new Object ({id: eq_card.get_id ().replace ("div#cd-", ''),
-					marque: cdata.Marque, model: cdata.Model
+					brand: cdata.Brand, model: cdata.Model
 				// Lauches an ajax request.
 				}); make_request ("/get-out", "POST", data, server => {
 					// No errors found.
