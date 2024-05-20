@@ -3,10 +3,10 @@
 * @project It Manager - https://it-infrastructure-manager.onrender.com
 * @author Obrymec - obrymecsprinces@gmail.com
 * @created 2021-12-17
-* @updated 2024-04-07
+* @updated 2024-05-19
 * @supported DESKTOP
 * @file server.js
-* @version 0.0.2
+* @version 0.0.3
 */
 
 // Dependencies.
@@ -14,7 +14,7 @@ const controller = require ("./vendors/controller.js");
 const parser = require ("body-parser");
 const express = require ("express");
 const app = express ();
-const port = 5500;
+const port = 5700;
 
 // App configurations.
 app.use (parser.urlencoded ({extended: true}));

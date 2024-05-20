@@ -3,10 +3,10 @@
 * @author: Obrymec - obrymecsprinces@gmail.com
 * @fileoverview: Sign in/up view stylesheet.
 * @created: 2021-12-17
-* @updated: 2024-04-07
+* @updated: 2024-05-19
 * @supported: DESKTOP
 * @file: sign.css
-* @version: 0.0.2
+* @version: 0.0.3
 */
 
 /* Sign in image background size adjustment */
@@ -62,7 +62,7 @@ div.icon-field svg {
 
 /* Sign fields */
 div.sign-fields {
-	background-color: var(--black-700);
+	background-color: var(--black-800);
 	backdrop-filter: blur(0);
 	justify-content: center;
 	align-items: center;

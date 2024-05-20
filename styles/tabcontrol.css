@@ -4,9 +4,9 @@
 * @author: Obrymec - obrymecsprinces@gmail.com
 * @file: tabcontrol.css
 * @created: 2021-12-17
-* @updated: 2024-04-07
+* @updated: 2024-05-19
 * @supported: DESKTOP
-* @version: 0.0.2
+* @version: 0.0.3
 */
 
 /* Tab control header */
@@ -47,6 +47,6 @@ label.section-text {
 
 /* Tab control content */
 div.tab-content {
-	overflow-y: auto;
+	overflow-y: hidden;
 	height: 100%;
 }

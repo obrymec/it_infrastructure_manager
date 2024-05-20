@@ -3,10 +3,10 @@
 * @author: Obrymec - obrymecsprinces@gmail.com
 * @fileoverview: Widget component stylesheet.
 * @created: 2021-12-17
-* @updated: 2024-04-07
+* @updated: 2024-05-19
 * @supported: DESKTOP
 * @file: widget.css
-* @version: 0.0.2
+* @version: 0.0.3
 */
 
 /* Generic card options */
@@ -18,7 +18,7 @@ div.card-options, div.widget-options {
 
 /* Generic card attributes and data */
 div.card-attr, div.card-datum {
-	color: var(--var(--black)-700);
+	color: var(--black-700);
 	font-family: verdana;
 	margin-bottom: 15px;
 	font-size: 15px;
@@ -105,7 +105,6 @@ button.card-option, button.widget-option, div.msg-options > button {
 	transition-property: background-color, box-shadow, text-shadow, transform;
 	background-color: var(--primary-900);
 	box-shadow: 0 1px 3px var(--grey);
-	box-shadow: 0 0 3px var(--black);
 	text-shadow: 0 0 0 transparent;
 	transition-duration: 0.3s;
 	padding: 8px 8px 8px 8px;
@@ -128,13 +127,15 @@ div.msg-options > button:hover {
 /* Disabled button */
 button.disabled {
 	background-color: var(--white-400);
-	text-shadow: 0 0 6px var(--white);
+	text-shadow: 0 0 0 var(--white);
+	box-shadow: 0 0 0 var(--black);
 	pointer-events: none;
+	color: var(--grey);
 }
 
 /* Generic widget box */
 div.widget-box {
-	background-color: var(--black-700);
+	background-color: var(--black-800);
 	backdrop-filter: blur(4px);
 	justify-content: center;
 	align-items: center;

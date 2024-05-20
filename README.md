@@ -90,7 +90,7 @@ yarn start
 Then, open your favorite browser and tap
 on the search bar, the following link :
 ```sh
-http://localhost:5500/
+http://localhost:5700/
 ```
 
 Enjoy :)
