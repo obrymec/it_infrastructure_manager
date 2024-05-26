@@ -3,26 +3,29 @@
 * @project It Manager - https://it-infrastructure-manager.onrender.com
 * @author Obrymec - obrymecsprinces@gmail.com
 * @created 2021-12-17
-* @updated 2024-05-19
+* @updated 2024-05-26
 * @supported DESKTOP
 * @file server.js
-* @version 0.0.3
+* @version 0.0.4
 */
 
 // Dependencies.
-const controller = require ("./vendors/controller.js");
+const controller = require ("./back_end/controller.js");
 const parser = require ("body-parser");
 const express = require ("express");
 const app = express ();
 const port = 5700;
+const options = {
+	root: `${__dirname}/front_end`
+};
 
 // App configurations.
 app.use (parser.urlencoded ({extended: true}));
-app.use (express.static (__dirname));
+app.use (express.static (options.root));
 app.use (parser.json ());
 
 // App routes.
-app.get ('/', (_, res) => res.sendFile ("index.html", {root: __dirname}));
+app.get ('/', (_, res) => res.sendFile ("public/index.html", options));
 // For `availables-equipments` operation.
 app.get (
 	"/eq-availables",
