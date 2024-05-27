@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /service_worker.js
+Disallow: /assets/images/
+Disallow: /assets/logos/
+Disallow: /sources.html
+Disallow: /stylesheets/
