@@ -1,6 +1,6 @@
 # IT Infrastructure Manager
 ![Full Stack Development](https://img.shields.io/badge/full%20stack%20development-skyblue.svg?style=for-the-badge)
-![Progressive Web App](https://img.shields.io/badge/progressive-web-app-darkblue.svg?style=for-the-badge)
+![Progressive Web App](https://img.shields.io/badge/progressive%20web%20app-darkblue.svg?style=for-the-badge)
 ![IT Infrastructure](https://img.shields.io/badge/it%20infrastructure-steelblue.svg?style=for-the-badge)
 ![IT Management](https://img.shields.io/badge/it%20management-slateblue?style=for-the-badge)
 
