@@ -1,7 +1,7 @@
 {
 	"homepage": "https://github.com/obrymec/it_infrastructure_manager#readme",
-	"description": "An awesome web app for it infrastructure management.",
 	"author": "Obrymec - obrymecsprinces@gmail.com",
+	"description": "It infrastructure management.",
 	"name": "it-infrastructure-manager",
 	"main": "./server.js",
 	"version": "1.0.1",

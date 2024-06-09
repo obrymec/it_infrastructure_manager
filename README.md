@@ -1,8 +1,8 @@
 # IT Infrastructure Manager
 ![Full Stack Development](https://img.shields.io/badge/full%20stack%20development-skyblue.svg?style=for-the-badge)
+![Progressive Web App](https://img.shields.io/badge/progressive-web-app-darkblue.svg?style=for-the-badge)
 ![IT Infrastructure](https://img.shields.io/badge/it%20infrastructure-steelblue.svg?style=for-the-badge)
-![Web Application](https://img.shields.io/badge/web%20application-slateblue?style=for-the-badge)
-![PWA](https://img.shields.io/badge/pwa-darkblue.svg?style=for-the-badge)
+![IT Management](https://img.shields.io/badge/it%20management-slateblue?style=for-the-badge)
 
 This big project is academic. The main goal of the project is to manage IT
 infrastructure in the computer packs. It has been developed with Native Web
